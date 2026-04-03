@@ -4,624 +4,819 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Portfolio</title>
+  <title>Parth Wakodikar - Full Stack Developer</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-  <link rel="stylesheet" href="styleportfolio.css">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0f1419 100%);
-      background-attachment: fixed;
-    }
-    .glow-text {
-      text-shadow: 0 0 30px rgba(168, 85, 247, 0.6), 0 0 60px rgba(168, 85, 247, 0.3), 0 0 90px rgba(236, 72, 153, 0.2);
-      font-weight: 700;
-      letter-spacing: 0.5px;
-    }
-    .gradient-border {
-      background: linear-gradient(135deg, #e0e0e0 0%, #a0a0a0 50%, #606060 100%);
-    }
     * {
-      color-scheme: dark;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #0a0a0a;
+      background-attachment: fixed;
+      overflow-x: hidden;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .glass-effect {
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .button-glow {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+    }
+
+    .button-glow::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.5s;
+    }
+
+    .button-glow:hover::before {
+      left: 100%;
+    }
+
+    .nav-link-underline {
+      position: relative;
+      display: inline-block;
+    }
+
+    .nav-link-underline::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #00d4ff, #0099ff);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link-underline:hover::after {
+      width: 100%;
+    }
+
+    .card-hover {
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .card-hover:hover {
+      transform: translateY(-8px);
+      border-color: rgba(0, 212, 255, 0.5);
+    }
+
+    .skill-container {
+      perspective: 1000px;
+    }
+
+    .skill-item {
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .skill-item:hover {
+      transform: translateY(-4px);
+    }
+
+    .project-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(0, 153, 255, 0.1));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .card-hover:hover .project-overlay {
+      opacity: 1;
+    }
+
+    .floating-bg {
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.15;
+      z-index: -1;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(30px); }
+    }
+
+    .floating-bg-1 {
+      top: 10%;
+      right: 10%;
+      background: #00d4ff;
+      animation-delay: 0s;
+    }
+
+    .floating-bg-2 {
+      bottom: 20%;
+      left: 10%;
+      background: #0099ff;
+      animation-delay: 2s;
+    }
+
+    .floating-bg-3 {
+      top: 50%;
+      right: 20%;
+      background: #00d4ff;
+      animation-delay: 4s;
+    }
+
+    .text-glow {
+      text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+    }
+
+    .code-block {
+      position: relative;
+      background: rgba(0, 0, 0, 0.5);
+      border-left: 3px solid #00d4ff;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      font-family: 'Courier New', monospace;
+      font-size: 0.875rem;
+      color: #00d4ff;
+      overflow-x: auto;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .pulse-dot {
+      width: 12px;
+      height: 12px;
+      background: #00d4ff;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { 
+        box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.7);
+        opacity: 1;
+      }
+      50% { 
+        box-shadow: 0 0 0 10px rgba(0, 212, 255, 0);
+        opacity: 0.8;
+      }
+    }
+
+    .badge-animate {
+      display: inline-block;
+      animation: float-badge 0.3s ease;
+    }
+
+    @keyframes float-badge {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .image-frame {
+      position: relative;
+      overflow: hidden;
+      border-radius: 2rem;
+    }
+
+    .image-frame::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+      border-radius: 2rem;
+      padding: 3px;
+      z-index: -1;
+    }
+
+    .image-frame img {
+      border-radius: 2rem;
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .image-frame:hover img {
+      transform: scale(1.05);
+    }
+
+    .gradient-border-bottom {
+      position: relative;
+      padding-bottom: 1rem;
+    }
+
+    .gradient-border-bottom::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100px;
+      height: 3px;
+      background: linear-gradient(90deg, #00d4ff, #0099ff);
+      border-radius: 2px;
+    }
+
+    .social-icon-wrapper {
+      position: relative;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+      border-radius: 12px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideInUp 0.5s ease forwards;
+    }
+
+    @keyframes slideInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .social-icon-wrapper:nth-child(1) { animation-delay: 0.1s; }
+    .social-icon-wrapper:nth-child(2) { animation-delay: 0.2s; }
+    .social-icon-wrapper:nth-child(3) { animation-delay: 0.3s; }
+
+    .social-icon-wrapper:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+    }
+
+    .social-icon-wrapper svg {
+      width: 24px;
+      height: 24px;
+      color: white;
     }
   </style>
 </head>
 
-<body class="text-gray-100 scroll-smooth">
+<body class="text-gray-100">
 
-  <!-- Navbar -->
-  <nav class="bg-gradient-to-r from-slate-950/80 via-purple-950/80 to-slate-950/80 backdrop-blur-xl p-6 sticky top-0 z-50 shadow-2xl shadow-purple-900/50 animate__animated animate__fadeInDown border-b border-purple-500/30">
-    <div class="container mx-auto flex justify-between items-center">
-      <h1 class="text-3xl font-bold bg-gradient-to-r from-violet-400 via-purple-400 to-fuchsia-400 bg-clip-text text-transparent hover:scale-105 transition-all duration-300 animate__animated animate__pulse animate__infinite glow-text">
-        <span class="hover:animate-spin inline-block mr-2">✨</span>Dev Portfolio
-      </h1>
-      <ul class="flex space-x-8">
-        <li class="animate__animated animate__fadeInRight animate__delay-1s">
-          <a href="#about" class="nav-link group relative text-gray-200 hover:text-violet-300 transition-colors">
-            <span>About</span>
-            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-violet-400 to-fuchsia-400 group-hover:w-full transition-all duration-300"></span>
-          </a>
-        </li>
-        <li class="animate__animated animate__fadeInRight animate__delay-2s">
-          <a href="#skills" class="nav-link group relative text-gray-200 hover:text-violet-300 transition-colors">
-            <span>Skills</span>
-            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-violet-400 to-fuchsia-400 group-hover:w-full transition-all duration-300"></span>
-          </a>
-        </li>
-        <li class="animate__animated animate__fadeInRight animate__delay-3s">
-          <a href="#projects" class="nav-link group relative text-gray-200 hover:text-violet-300 transition-colors">
-            <span>Projects</span>
-            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-violet-400 to-fuchsia-400 group-hover:w-full transition-all duration-300"></span>
-          </a>
-        </li>
-        <li class="animate__animated animate__fadeInRight animate__delay-4s">
-          <a href="#contact" class="px-6 py-2 bg-gradient-to-r from-violet-600 to-fuchsia-600 rounded-full hover:from-violet-500 hover:to-fuchsia-500 transition-all duration-300 hover:shadow-lg hover:shadow-fuchsia-500/50 transform hover:-translate-y-1 font-semibold">
-            Contact
-          </a>
-        </li>
+  <!-- Floating Background Elements -->
+  <div class="floating-bg floating-bg-1"></div>
+  <div class="floating-bg floating-bg-2"></div>
+  <div class="floating-bg floating-bg-3"></div>
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full z-50 glass-effect">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="text-2xl font-bold">
+        <a href="#" class="gradient-text text-glow">PARTH</a>
+      </div>
+
+      <ul class="hidden md:flex gap-8">
+        <li><a href="#about" class="nav-link-underline text-gray-300 hover:text-white transition-colors text-sm font-medium">About</a></li>
+        <li><a href="#skills" class="nav-link-underline text-gray-300 hover:text-white transition-colors text-sm font-medium">Skills</a></li>
+        <li><a href="#projects" class="nav-link-underline text-gray-300 hover:text-white transition-colors text-sm font-medium">Projects</a></li>
+        <li><a href="#contact" class="nav-link-underline text-gray-300 hover:text-white transition-colors text-sm font-medium">Contact</a></li>
       </ul>
+
+      <a href="#contact" class="px-6 py-2 button-glow text-black rounded-lg font-semibold text-sm hover:shadow-lg hover:shadow-cyan-500/50 transition-all">
+        Let's Talk
+      </a>
     </div>
   </nav>
 
-  <!-- About Me -->
-  <section id="about" class="py-20 px-6 relative overflow-hidden">
-    <div class="container mx-auto flex flex-col md:flex-row items-center md:space-x-12">
-      <div class="md:w-1/2 animate__animated animate__fadeInLeft animate__delay-1s">
-        <div class="gradient-border p-1 rounded-3xl w-80 mx-auto md:mx-0">
-          <img src="image.jpg" alt="Professional portrait" class="rounded-3xl w-full shadow-2xl shadow-purple-600/40 hover:scale-105 hover:shadow-2xl hover:shadow-fuchsia-500/50 transition-all duration-500 filter hover:brightness-125">
+  <!-- Hero Section -->
+  <section class="min-h-screen flex items-center justify-center px-6 pt-32 pb-32">
+    <div class="container mx-auto max-w-5xl">
+      <div class="space-y-8">
+        <!-- Large Title -->
+        <div>
+          <h1 class="text-7xl md:text-8xl font-bold leading-tight mb-6">
+            <span class="block text-white">Creative Developer</span>
+            <span class="block gradient-text text-glow">& Problem Solver</span>
+          </h1>
+        </div>
+
+        <!-- Subtitle -->
+        <p class="text-xl md:text-2xl text-gray-400 max-w-2xl font-light leading-relaxed">
+          Building beautiful, functional digital experiences with modern web technologies. Based in Pune, passionate about clean code and great design.
+        </p>
+
+        <!-- Stats -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 pt-8">
+          <div>
+            <div class="stat-number">5+</div>
+            <p class="text-gray-400 text-sm mt-2">Projects Delivered</p>
+          </div>
+          <div>
+            <div class="stat-number">10+</div>
+            <p class="text-gray-400 text-sm mt-2">Technologies</p>
+          </div>
+          <div>
+            <div class="stat-number">100%</div>
+            <p class="text-gray-400 text-sm mt-2">Client Focus</p>
+          </div>
+          <div>
+            <div class="stat-number">24/7</div>
+            <p class="text-gray-400 text-sm mt-2">Dedicated</p>
+          </div>
+        </div>
+
+        <!-- CTA Buttons -->
+        <div class="flex gap-4 pt-8">
+          <a href="#projects" class="px-8 py-3 button-glow text-black rounded-lg font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-all">
+            View Work
+          </a>
+          <a href="#contact" class="px-8 py-3 border border-cyan-500/50 text-white rounded-lg font-semibold hover:bg-cyan-500/10 transition-all">
+            Get in Touch
+          </a>
         </div>
       </div>
-      <div class="md:w-1/2 mt-8 md:mt-0">
-        <h2 class="text-5xl font-bold bg-gradient-to-r from-violet-400 via-purple-400 to-fuchsia-400 bg-clip-text text-transparent mb-6 animate__animated animate__bounceIn animate__delay-1s glow-text">
-          About Me
-        </h2>
-        <p class="text-gray-300 leading-relaxed mb-6 animate__animated animate__fadeInRight animate__delay-2s text-lg">
-          Hi! I'm <b class="text-violet-300">Parth Wakodikar</b> from Pune. Currently mastering MERN stack development . I specialize in VS Code, GitHub Pages, and Vercel deployments.
-        </p>
-        <p class="text-gray-300 leading-relaxed mb-6 animate__animated animate__fadeInRight animate__delay-3s text-lg">
-          Focused on full-stack development with JavaScript, React, Node.js, and cloud technologies. I'm committed to continuous learning and staying ahead of industry trends.
-        </p>
-        <div class="space-y-4 animate__animated animate__fadeInUp animate__delay-4s">
-          <div class="flex items-center space-x-3 text-gray-200">
-            <span class="text-2xl">🎓</span>
-            <p>Electronics and Telecommunication Engineering</p>
-          </div>
-          <div class="flex items-center space-x-3 text-gray-200">
-            <span class="text-2xl">💼</span>
-            <p>Full Stack Developer in Progress</p>
-          </div>
-          <div class="flex items-center space-x-3 text-gray-200">
-            <span class="text-2xl">🚀</span>
-            <p>Open Source Contributor</p>
-          </div>
-        </div>
-        <a href="ParthWResume.pdf" rel="mycv" target="_self" class="mt-8 bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 text-white px-8 py-3 rounded-full transform hover:scale-105 transition-all duration-300 animate__animated animate__bounceIn animate__delay-5s inline-block font-semibold shadow-lg shadow-fuchsia-500/30">
-          Download Resume
-        </a>
+
+      <!-- Scroll Indicator -->
+      <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2">
+        <p class="text-xs text-gray-500 uppercase tracking-wider">Scroll to explore</p>
+        <svg class="w-5 h-5 text-cyan-400 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+        </svg>
       </div>
     </div>
-    <div class="absolute -z-10 w-96 h-96 bg-gradient-to-br from-violet-600/20 to-fuchsia-600/20 rounded-full blur-3xl top-1/2 left-1/2 -translate-x-1/2 animate__animated animate__pulse animate__infinite"></div>
   </section>
 
-  <!-- Skills -->
-  <section id="skills" class="py-20 px-6 relative overflow-hidden">
-    <div class="container mx-auto">
-      <h2 class="text-5xl font-bold bg-gradient-to-r from-violet-400 via-purple-400 to-fuchsia-400 bg-clip-text text-transparent mb-12 text-center animate__animated animate__fadeInDown glow-text">
-        My Skills
-      </h2>
+  <!-- About Section -->
+  <section id="about" class="py-24 px-6 relative">
+    <div class="container mx-auto max-w-5xl">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+        <!-- Profile Photo -->
+        <div class="order-2 md:order-1">
+          <div class="image-frame w-full h-auto max-w-md mx-auto">
+            <img src="image.jpg" alt="Parth Wakodikar" class="w-full h-full object-cover">
+          </div>
+          
+          <!-- Social Links Below Photo -->
+          <div class="flex justify-center gap-4 mt-8">
+            <a href="https://www.linkedin.com/in/parth-w-3b15b4317" target="_blank" class="social-icon-wrapper group">
+              <svg fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path>
+              </svg>
+            </a>
+            <a href="https://github.com/Parthwebde12" target="_blank" class="social-icon-wrapper group">
+              <svg fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path>
+              </svg>
+            </a>
+            <a href="https://twitter.com" target="_blank" class="social-icon-wrapper group">
+              <svg fill="currentColor" viewBox="0 0 24 24">
+                <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2s9 5 20 5a9.5 9.5 0 00-9-5.5c4.75-2.35 7-7 7-11.65a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0123 3z"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
 
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-        <!-- Frontend Skills -->
-        <div class="bg-gradient-to-br from-slate-800/60 to-purple-900/40 p-6 rounded-2xl animate__animated animate__fadeInUp backdrop-blur-lg border border-violet-500/20 hover:border-violet-500/50 transition-all shadow-xl shadow-purple-900/20">
-          <h3 class="text-xl font-bold bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent mb-4">Frontend</h3>
+        <!-- Left Content -->
+        <div class="order-1 md:order-2">
+          <p class="text-cyan-400 text-sm font-semibold uppercase tracking-widest mb-4">About Me</p>
+          <div class="gradient-border-bottom">
+            <h2 class="text-5xl md:text-6xl font-bold mb-8 leading-tight">
+              <span class="text-white">Crafting</span>
+              <span class="gradient-text"> digital</span>
+              <span class="text-white"> experiences</span>
+            </h2>
+          </div>
+
+          <p class="text-gray-400 text-lg mb-6 leading-relaxed mt-8">
+            I'm a full-stack developer passionate about building web applications that solve real problems. With expertise in modern JavaScript frameworks and backend technologies, I create seamless user experiences backed by robust code.
+          </p>
+
+          <p class="text-gray-400 text-lg mb-8 leading-relaxed">
+            Currently pursuing Electronics & Telecommunication Engineering while continuously learning new technologies. When I'm not coding, you'll find me exploring design trends, contributing to open source, or working on side projects.
+          </p>
+
+          <div class="space-y-3 mb-8">
+            <div class="flex items-center gap-3">
+              <span class="w-6 h-6 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-full flex items-center justify-center">
+                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+              </span>
+              <p class="text-gray-300">MERN Stack Expert</p>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="w-6 h-6 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-full flex items-center justify-center">
+                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+              </span>
+              <p class="text-gray-300">Responsive Design Specialist</p>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="w-6 h-6 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-full flex items-center justify-center">
+                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+              </span>
+              <p class="text-gray-300">Problem Solver & Learner</p>
+            </div>
+          </div>
+
+          <a href="ParthWResume.pdf" target="_blank" class="inline-block px-8 py-3 border border-cyan-500/50 text-cyan-400 rounded-lg font-semibold hover:bg-cyan-500/10 transition-all">
+            Download Resume
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="py-24 px-6 relative">
+    <div class="container mx-auto max-w-5xl">
+      <div class="text-center mb-16">
+        <p class="text-cyan-400 text-sm font-semibold uppercase tracking-widest mb-4">Skills & Expertise</p>
+        <h2 class="text-5xl md:text-6xl font-bold">
+          <span class="text-white">Technical</span>
+          <span class="gradient-text"> Stack</span>
+        </h2>
+      </div>
+
+      <div class="skill-container grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Frontend -->
+        <div class="skill-item glass-effect rounded-lg p-8">
+          <h3 class="text-2xl font-bold text-white mb-6">Frontend</h3>
           <div class="space-y-4">
-            <div class="skill-bar">
-              <div class="flex justify-between mb-2 text-gray-300">
-                <span>HTML/CSS</span>
-                <span class="text-violet-400 font-semibold">95%</span>
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="text-gray-300 font-medium">React</span>
+                <span class="text-cyan-400 font-semibold">85%</span>
               </div>
-              <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
-                <div class="h-full w-[95%] bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full"></div>
-              </div>
-            </div>
-            <div class="skill-bar">
-              <div class="flex justify-between mb-2 text-gray-300">
-                <span>JavaScript</span>
-                <span class="text-violet-400 font-semibold">90%</span>
-              </div>
-              <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
-                <div class="h-full w-[90%] bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full"></div>
+              <div class="h-2 bg-gray-800 rounded-full overflow-hidden">
+                <div class="h-full w-[85%] bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full"></div>
               </div>
             </div>
-            <div class="skill-bar">
-              <div class="flex justify-between mb-2 text-gray-300">
-                <span>React</span>
-                <span class="text-violet-400 font-semibold">85%</span>
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="text-gray-300 font-medium">JavaScript</span>
+                <span class="text-cyan-400 font-semibold">90%</span>
               </div>
-              <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
-                <div class="h-full w-[85%] bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full"></div>
+              <div class="h-2 bg-gray-800 rounded-full overflow-hidden">
+                <div class="h-full w-[90%] bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="text-gray-300 font-medium">TailwindCSS</span>
+                <span class="text-cyan-400 font-semibold">95%</span>
+              </div>
+              <div class="h-2 bg-gray-800 rounded-full overflow-hidden">
+                <div class="h-full w-[95%] bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="text-gray-300 font-medium">HTML/CSS</span>
+                <span class="text-cyan-400 font-semibold">95%</span>
+              </div>
+              <div class="h-2 bg-gray-800 rounded-full overflow-hidden">
+                <div class="h-full w-[95%] bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full"></div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Backend Skills -->
-        <div class="bg-gradient-to-br from-slate-800/60 to-purple-900/40 p-6 rounded-2xl animate__animated animate__fadeInUp animate__delay-1s backdrop-blur-lg border border-violet-500/20 hover:border-violet-500/50 transition-all shadow-xl shadow-purple-900/20">
-          <h3 class="text-xl font-bold bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent mb-4">Backend</h3>
+        <!-- Backend -->
+        <div class="skill-item glass-effect rounded-lg p-8">
+          <h3 class="text-2xl font-bold text-white mb-6">Backend</h3>
           <div class="space-y-4">
-            <div class="skill-bar">
-              <div class="flex justify-between mb-2 text-gray-300">
-                <span>Node.js</span>
-                <span class="text-violet-400 font-semibold">80%</span>
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="text-gray-300 font-medium">Node.js</span>
+                <span class="text-cyan-400 font-semibold">80%</span>
               </div>
-              <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
-                <div class="h-full w-[80%] bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full"></div>
-              </div>
-            </div>
-            <div class="skill-bar">
-              <div class="flex justify-between mb-2 text-gray-300">
-                <span>Express</span>
-                <span class="text-violet-400 font-semibold">85%</span>
-              </div>
-              <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
-                <div class="h-full w-[85%] bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full"></div>
+              <div class="h-2 bg-gray-800 rounded-full overflow-hidden">
+                <div class="h-full w-[80%] bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full"></div>
               </div>
             </div>
-            <div class="skill-bar">
-              <div class="flex justify-between mb-2 text-gray-300">
-                <span>MongoDB</span>
-                <span class="text-violet-400 font-semibold">75%</span>
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="text-gray-300 font-medium">Express.js</span>
+                <span class="text-cyan-400 font-semibold">80%</span>
               </div>
-              <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
-                <div class="h-full w-[75%] bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full"></div>
+              <div class="h-2 bg-gray-800 rounded-full overflow-hidden">
+                <div class="h-full w-[80%] bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="text-gray-300 font-medium">MongoDB</span>
+                <span class="text-cyan-400 font-semibold">75%</span>
+              </div>
+              <div class="h-2 bg-gray-800 rounded-full overflow-hidden">
+                <div class="h-full w-[75%] bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="text-gray-300 font-medium">Git & GitHub</span>
+                <span class="text-cyan-400 font-semibold">90%</span>
+              </div>
+              <div class="h-2 bg-gray-800 rounded-full overflow-hidden">
+                <div class="h-full w-[90%] bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full"></div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Programming Languages -->
-        <div class="bg-gradient-to-br from-slate-800/60 to-purple-900/40 p-6 rounded-2xl animate__animated animate__fadeInUp animate__delay-2s backdrop-blur-lg border border-violet-500/20 hover:border-violet-500/50 transition-all shadow-xl shadow-purple-900/20">
-          <h3 class="text-xl font-bold bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent mb-4">Languages</h3>
+        <!-- Languages -->
+        <div class="skill-item glass-effect rounded-lg p-8">
+          <h3 class="text-2xl font-bold text-white mb-6">Languages</h3>
           <div class="space-y-4">
-            <div class="skill-bar">
-              <div class="flex justify-between mb-2 text-gray-300">
-                <span>C++</span>
-                <span class="text-violet-400 font-semibold">90%</span>
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="text-gray-300 font-medium">C++</span>
+                <span class="text-cyan-400 font-semibold">90%</span>
               </div>
-              <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
-                <div class="h-full w-[90%] bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full"></div>
-              </div>
-            </div>
-            <div class="skill-bar">
-              <div class="flex justify-between mb-2 text-gray-300">
-                <span>Java</span>
-                <span class="text-violet-400 font-semibold">85%</span>
-              </div>
-              <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
-                <div class="h-full w-[85%] bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full"></div>
+              <div class="h-2 bg-gray-800 rounded-full overflow-hidden">
+                <div class="h-full w-[90%] bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full"></div>
               </div>
             </div>
-            <div class="skill-bar">
-              <div class="flex justify-between mb-2 text-gray-300">
-                <span>Python</span>
-                <span class="text-violet-400 font-semibold">80%</span>
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="text-gray-300 font-medium">Java</span>
+                <span class="text-cyan-400 font-semibold">85%</span>
               </div>
-              <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
-                <div class="h-full w-[80%] bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full"></div>
+              <div class="h-2 bg-gray-800 rounded-full overflow-hidden">
+                <div class="h-full w-[85%] bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="text-gray-300 font-medium">Python</span>
+                <span class="text-cyan-400 font-semibold">80%</span>
+              </div>
+              <div class="h-2 bg-gray-800 rounded-full overflow-hidden">
+                <div class="h-full w-[80%] bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="text-gray-300 font-medium">DSA</span>
+                <span class="text-cyan-400 font-semibold">85%</span>
+              </div>
+              <div class="h-2 bg-gray-800 rounded-full overflow-hidden">
+                <div class="h-full w-[85%] bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full"></div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Other Skills -->
-        <div class="bg-gradient-to-br from-slate-800/60 to-purple-900/40 p-6 rounded-2xl animate__animated animate__fadeInUp animate__delay-3s backdrop-blur-lg border border-violet-500/20 hover:border-violet-500/50 transition-all shadow-xl shadow-purple-900/20">
-          <h3 class="text-xl font-bold bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent mb-4">Other Skills</h3>
-          <div class="space-y-4">
-            <div class="skill-bar">
-              <div class="flex justify-between mb-2 text-gray-300">
-                <span>DSA</span>
-                <span class="text-violet-400 font-semibold">85%</span>
-              </div>
-              <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
-                <div class="h-full w-[85%] bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full"></div>
-              </div>
-            </div>
-            <div class="skill-bar">
-              <div class="flex justify-between mb-2 text-gray-300">
-                <span>Git</span>
-                <span class="text-violet-400 font-semibold">90%</span>
-              </div>
-              <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
-                <div class="h-full w-[90%] bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full"></div>
-              </div>
-            </div>
-            <div class="skill-bar">
-              <div class="flex justify-between mb-2 text-gray-300">
-                <span>TailwindCSS</span>
-                <span class="text-violet-400 font-semibold">95%</span>
-              </div>
-              <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
-                <div class="h-full w-[95%] bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full"></div>
-              </div>
-            </div>
+        <!-- Tools -->
+        <div class="skill-item glass-effect rounded-lg p-8">
+          <h3 class="text-2xl font-bold text-white mb-6">Tools & Platforms</h3>
+          <div class="flex flex-wrap gap-3">
+            <span class="badge-animate px-4 py-2 bg-cyan-500/20 text-cyan-400 rounded-lg border border-cyan-500/50 text-sm font-medium">VS Code</span>
+            <span class="badge-animate px-4 py-2 bg-cyan-500/20 text-cyan-400 rounded-lg border border-cyan-500/50 text-sm font-medium">Vercel</span>
+            <span class="badge-animate px-4 py-2 bg-cyan-500/20 text-cyan-400 rounded-lg border border-cyan-500/50 text-sm font-medium">GitHub</span>
+            <span class="badge-animate px-4 py-2 bg-cyan-500/20 text-cyan-400 rounded-lg border border-cyan-500/50 text-sm font-medium">Postman</span>
+            <span class="badge-animate px-4 py-2 bg-cyan-500/20 text-cyan-400 rounded-lg border border-cyan-500/50 text-sm font-medium">Git</span>
+            <span class="badge-animate px-4 py-2 bg-cyan-500/20 text-cyan-400 rounded-lg border border-cyan-500/50 text-sm font-medium">NPM</span>
           </div>
         </div>
       </div>
     </div>
+  </section>
 
-    <!-- Certifications -->
-    <section id="certifications" class="py-20 px-6 relative overflow-hidden">
-      <h2 class="text-5xl font-bold bg-gradient-to-r from-violet-400 via-purple-400 to-fuchsia-400 bg-clip-text text-transparent mb-12 text-center animate__animated animate__fadeInDown glow-text">
-        Certifications & Achievements
-      </h2>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Certification 1 -->
-        <div class="bg-gradient-to-br from-slate-800/60 to-purple-900/40 rounded-2xl p-6 transform hover:scale-105 transition-all duration-500 border border-violet-500/30 hover:border-fuchsia-500/50 group animate__animated animate__fadeInUp backdrop-blur-lg shadow-xl shadow-purple-900/20">
-          <div class="relative mb-4 overflow-hidden rounded-xl">
-            <img src="progress-sign-indicates-ongoing-happening-indicating-now-40247141.webp" alt="Certificate" class="w-full h-48 object-cover transform group-hover:scale-110 transition-all duration-500">
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
-              <button type="button" class="px-4 py-2 bg-gradient-to-r from-violet-600 to-fuchsia-600 rounded-full text-sm font-semibold hover:from-violet-500 hover:to-fuchsia-500 transform hover:-translate-y-1 transition-all duration-300 shadow-lg shadow-fuchsia-500/30">
-                View Certificate
-              </button>
-            </div>
-          </div>
-          <div class="space-y-2">
-            <h3 class="text-xl font-bold bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent">Problem Solving</h3>
-            <p class="text-gray-400">GeeksForGeeks</p>
-            <div class="flex items-center space-x-2 text-sm text-gray-500">
-              <span>🏆 Completed</span>
-              <span>•</span>
-              <span>JUNE 2025</span>
-            </div>
-            <div class="pt-4 flex flex-wrap gap-2">
-              <span class="px-3 py-1 bg-gradient-to-r from-violet-600/20 to-fuchsia-600/20 text-violet-300 rounded-full text-xs border border-violet-500/30">c++</span>
-              <span class="px-3 py-1 bg-gradient-to-r from-violet-600/20 to-fuchsia-600/20 text-violet-300 rounded-full text-xs border border-violet-500/30">DSA</span>
-              <span class="px-3 py-1 bg-gradient-to-r from-violet-600/20 to-fuchsia-600/20 text-violet-300 rounded-full text-xs border border-violet-500/30">Problem Solving</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Certification 2 -->
-        <div class="bg-gradient-to-br from-slate-800/60 to-purple-900/40 rounded-2xl p-6 transform hover:scale-105 transition-all duration-500 border border-violet-500/30 hover:border-fuchsia-500/50 group animate__animated animate__fadeInUp animate__delay-1s backdrop-blur-lg shadow-xl shadow-purple-900/20">
-          <div class="relative mb-4 overflow-hidden rounded-xl">
-            <img src="progress-sign-indicates-ongoing-happening-indicating-now-40247141.webp" alt="Certificate" class="w-full h-48 object-cover transform group-hover:scale-110 transition-all duration-500">
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
-              <button class="px-4 py-2 bg-gradient-to-r from-violet-600 to-fuchsia-600 rounded-full text-sm font-semibold hover:from-violet-500 hover:to-fuchsia-500 transform hover:-translate-y-1 transition-all duration-300 shadow-lg shadow-fuchsia-500/30">
-                View Certificate
-              </button>
-            </div>
-          </div>
-          <div class="space-y-2">
-            <h3 class="text-xl font-bold bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent">React & JavaScript</h3>
-            <p class="text-gray-400">Tutorials Point</p>
-            <div class="flex items-center space-x-2 text-sm text-gray-500">
-              <span>🏆 Completed</span>
-              <span>•</span>
-              <span>Ongoing</span>
-            </div>
-            <div class="pt-4 flex flex-wrap gap-2">
-              <span class="px-3 py-1 bg-gradient-to-r from-violet-600/20 to-fuchsia-600/20 text-violet-300 rounded-full text-xs border border-violet-500/30">React</span>
-              <span class="px-3 py-1 bg-gradient-to-r from-violet-600/20 to-fuchsia-600/20 text-violet-300 rounded-full text-xs border border-violet-500/30">Node.js</span>
-              <span class="px-3 py-1 bg-gradient-to-r from-violet-600/20 to-fuchsia-600/20 text-violet-300 rounded-full text-xs border border-violet-500/30">JavaScript</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Certification 3 -->
-        <div class="bg-gradient-to-br from-slate-800/60 to-purple-900/40 rounded-2xl p-6 transform hover:scale-105 transition-all duration-500 border border-violet-500/30 hover:border-fuchsia-500/50 group animate__animated animate__fadeInUp animate__delay-2s backdrop-blur-lg shadow-xl shadow-purple-900/20">
-          <div class="relative mb-4 overflow-hidden rounded-xl">
-            <img src="WhatsApp Image 2025-07-23 at 18.05.39_af5221a1.jpg" alt="Certificate" class="w-full h-48 object-cover transform group-hover:scale-110 transition-all duration-500">
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
-              <button class="px-4 py-2 bg-gradient-to-r from-violet-600 to-fuchsia-600 rounded-full text-sm font-semibold hover:from-violet-500 hover:to-fuchsia-500 transform hover:-translate-y-1 transition-all duration-300 shadow-lg shadow-fuchsia-500/30">
-                View Certificate
-              </button>
-            </div>
-          </div>
-          <div class="space-y-2">
-            <h3 class="text-xl font-bold bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent">HTML & CSS: From Zero to Hero</h3>
-            <p class="text-gray-400">Tutorials Point</p>
-            <div class="flex items-center space-x-2 text-sm text-gray-500">
-              <span>🏆 Completed</span>
-              <span>•</span>
-              <span>JULY 2025</span>
-            </div>
-            <div class="pt-4 flex flex-wrap gap-2">
-              <span class="px-3 py-1 bg-gradient-to-r from-violet-600/20 to-fuchsia-600/20 text-violet-300 rounded-full text-xs border border-violet-500/30">HTML</span>
-              <span class="px-3 py-1 bg-gradient-to-r from-violet-600/20 to-fuchsia-600/20 text-violet-300 rounded-full text-xs border border-violet-500/30">CSS</span>
-              <span class="px-3 py-1 bg-gradient-to-r from-violet-600/20 to-fuchsia-600/20 text-violet-300 rounded-full text-xs border border-violet-500/30">BootstrapCSS</span>
-            </div>
-          </div>
-        </div>
+  <!-- Projects Section -->
+  <section id="projects" class="py-24 px-6 relative">
+    <div class="container mx-auto max-w-5xl">
+      <div class="text-center mb-16">
+        <p class="text-cyan-400 text-sm font-semibold uppercase tracking-widest mb-4">Featured Works</p>
+        <h2 class="text-5xl md:text-6xl font-bold">
+          <span class="text-white">Selected</span>
+          <span class="gradient-text"> Projects</span>
+        </h2>
       </div>
 
-      <div class="absolute -z-10 w-96 h-96 bg-gradient-to-br from-violet-600/20 to-fuchsia-600/20 rounded-full blur-3xl top-1/2 left-1/2 -translate-x-1/2 animate__animated animate__pulse animate__infinite"></div>
-    </section>
-
-    <!-- Education -->
-    <section id="education" class="py-20 px-6 relative overflow-hidden">
-      <div class="container mx-auto">
-        <h2 class="text-5xl font-bold bg-gradient-to-r from-violet-400 via-purple-400 to-fuchsia-400 bg-clip-text text-transparent mb-12 text-center animate__animated animate__fadeInDown glow-text">
-          My Education Journey
-        </h2>
-
-        <div class="relative">
-          <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-violet-600/50 to-fuchsia-600/50"></div>
-
-          <div class="space-y-16">
-            <!-- Education 1 -->
-            <div class="relative">
-              <div class="absolute left-1/2 transform -translate-x-1/2 -mt-3">
-                <div class="w-6 h-6 bg-gradient-to-br from-violet-500 to-fuchsia-500 rounded-full animate-pulse shadow-lg shadow-fuchsia-500/50"></div>
-              </div>
-              <div class="ml-auto w-1/2 pr-8 animate__animated animate__fadeInRight">
-                <div class="bg-gradient-to-br from-slate-800/60 to-purple-900/40 p-6 rounded-2xl border border-violet-500/30 hover:border-fuchsia-500/50 hover:transform hover:scale-105 transition-all duration-300 hover:shadow-xl hover:shadow-fuchsia-500/20 backdrop-blur-lg">
-                  <h3 class="text-xl font-bold text-violet-300">B.Tech in Electronics and Telecommunication Engineering</h3>
-                  <p class="text-gray-300 mt-2">DY Patil School of Engineering</p>
-                  <p class="text-gray-500 text-sm mt-1">2023-2027</p>
-                  <p class="text-violet-400 mt-3 font-semibold">CGPA: 8.5</p>
-                </div>
-              </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Project 1 -->
+        <div class="card-hover glass-effect rounded-lg overflow-hidden group">
+          <div class="relative h-64 overflow-hidden">
+            <img src="Project1.jpg.png" alt="Portfolio" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <div class="project-overlay"></div>
+          </div>
+          <div class="p-8">
+            <p class="text-cyan-400 text-xs font-semibold uppercase tracking-widest mb-3">Web Development</p>
+            <h3 class="text-2xl font-bold text-white mb-3">Portfolio Website</h3>
+            <p class="text-gray-400 mb-6">A modern, responsive portfolio showcasing projects and skills. Built with clean design principles and smooth interactions.</p>
+            <div class="flex gap-2 mb-6 flex-wrap">
+              <span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded text-xs border border-cyan-500/30">React</span>
+              <span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded text-xs border border-cyan-500/30">TailwindCSS</span>
+              <span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded text-xs border border-cyan-500/30">Modern Design</span>
             </div>
-
-            <!-- Education 2 -->
-            <div class="relative">
-              <div class="absolute left-1/2 transform -translate-x-1/2 -mt-3">
-                <div class="w-6 h-6 bg-gradient-to-br from-violet-500 to-fuchsia-500 rounded-full animate-pulse shadow-lg shadow-fuchsia-500/50"></div>
-              </div>
-              <div class="mr-auto w-1/2 pl-8 animate__animated animate__fadeInLeft">
-                <div class="bg-gradient-to-br from-slate-800/60 to-purple-900/40 p-6 rounded-2xl border border-violet-500/30 hover:border-fuchsia-500/50 hover:transform hover:scale-105 transition-all duration-300 hover:shadow-xl hover:shadow-fuchsia-500/20 backdrop-blur-lg">
-                  <h3 class="text-xl font-bold text-violet-300">Higher Secondary (XII)</h3>
-                  <p class="text-gray-300 mt-2">Taywade Junior College</p>
-                  <p class="text-gray-500 text-sm mt-1">2021-2023</p>
-                  <p class="text-violet-400 mt-3 font-semibold">Percentage: 85%</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Education 3 -->
-            <div class="relative">
-              <div class="absolute left-1/2 transform -translate-x-1/2 -mt-3">
-                <div class="w-6 h-6 bg-gradient-to-br from-violet-500 to-fuchsia-500 rounded-full animate-pulse shadow-lg shadow-fuchsia-500/50"></div>
-              </div>
-              <div class="ml-auto w-1/2 pr-8 animate__animated animate__fadeInRight">
-                <div class="bg-gradient-to-br from-slate-800/60 to-purple-900/40 p-6 rounded-2xl border border-violet-500/30 hover:border-fuchsia-500/50 hover:transform hover:scale-105 transition-all duration-300 hover:shadow-xl hover:shadow-fuchsia-500/20 backdrop-blur-lg">
-                  <h3 class="text-xl font-bold text-violet-300">Secondary School (X)</h3>
-                  <p class="text-gray-300 mt-2">Narayana Vidyalayam</p>
-                  <p class="text-gray-500 text-sm mt-1">2014-2020</p>
-                  <p class="text-violet-400 mt-3 font-semibold">Percentage: 92%</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="absolute -z-10 w-96 h-96 bg-gradient-to-br from-violet-600/20 to-fuchsia-600/20 rounded-full blur-3xl top-1/2 left-1/2 -translate-x-1/2 animate__animated animate__pulse animate__infinite"></div>
-      </div>
-    </section>
-
-    <!-- Facts Section -->
-    <section id="facts" class="py-20 px-6 relative overflow-hidden">
-      <div class="container mx-auto">
-        <h2 class="text-5xl font-bold bg-gradient-to-r from-violet-400 via-purple-400 to-fuchsia-400 bg-clip-text text-transparent mb-12 text-center animate__animated animate__fadeIn glow-text">
-          Known Facts About Me
-        </h2>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-          <div class="bg-gradient-to-br from-slate-800/60 to-purple-900/40 backdrop-blur-lg p-8 rounded-2xl animate__animated animate__fadeInLeft animate__delay-1s transform hover:scale-105 transition-all duration-500 border border-violet-500/30 hover:border-fuchsia-500/50 shadow-xl shadow-purple-900/20">
-            <h3 class="text-2xl font-bold bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent mb-4">
-              🎯 Professional Journey
-            </h3>
-            <p class="text-gray-300 leading-relaxed">Started programming at age 15, developed a passion for web development. Now exploring the exciting world of modern web technologies and cloud computing.</p>
-          </div>
-
-          <div class="bg-gradient-to-br from-slate-800/60 to-purple-900/40 backdrop-blur-lg p-8 rounded-2xl animate__animated animate__fadeInRight animate__delay-2s transform hover:scale-105 transition-all duration-500 border border-violet-500/30 hover:border-fuchsia-500/50 shadow-xl shadow-purple-900/20">
-            <h3 class="text-2xl font-bold bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent mb-4">
-              🌱 Current Focus
-            </h3>
-            <p class="text-gray-300 leading-relaxed">Diving deep into MERN stack development. Building projects with React, Node.js, and exploring cloud technologies.</p>
-          </div>
-
-          <div class="bg-gradient-to-br from-slate-800/60 to-purple-900/40 backdrop-blur-lg p-8 rounded-2xl animate__animated animate__fadeInLeft animate__delay-3s transform hover:scale-105 transition-all duration-500 border border-violet-500/30 hover:border-fuchsia-500/50 shadow-xl shadow-purple-900/20">
-            <h3 class="text-2xl font-bold bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent mb-4">
-              🏆 Achievements
-            </h3>
-            <p class="text-gray-300 leading-relaxed">Completed multiple certification courses in web development. Active participant in coding competitions and hackathons.</p>
-          </div>
-
-          <div class="bg-gradient-to-br from-slate-800/60 to-purple-900/40 backdrop-blur-lg p-8 rounded-2xl animate__animated animate__fadeInRight animate__delay-4s transform hover:scale-105 transition-all duration-500 border border-violet-500/30 hover:border-fuchsia-500/50 shadow-xl shadow-purple-900/20">
-            <h3 class="text-2xl font-bold bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent mb-4">
-              🌐 Community
-            </h3>
-            <p class="text-gray-300 leading-relaxed">Learning through collaboration. Active on GitHub, participating in open-source projects, and sharing knowledge with peers.</p>
-          </div>
-        </div>
-
-        <h3 class="text-3xl font-bold bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent mb-12 text-center animate__animated animate__fadeIn glow-text">
-          Hobbies & Interests
-        </h3>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-          <div class="hobby-card group bg-gradient-to-br from-slate-800/60 to-purple-900/40 p-8 rounded-2xl transform hover:scale-110 transition-all duration-500 border border-violet-500/20 hover:border-fuchsia-500/50 hover:shadow-lg hover:shadow-fuchsia-500/30 backdrop-blur-lg text-center">
-            <span class="text-5xl group-hover:scale-125 transition-transform block mb-4">🎮</span>
-            <h4 class="text-lg font-medium text-violet-300">Gaming</h4>
-          </div>
-
-          <div class="hobby-card group bg-gradient-to-br from-slate-800/60 to-purple-900/40 p-8 rounded-2xl transform hover:scale-110 transition-all duration-500 border border-violet-500/20 hover:border-fuchsia-500/50 hover:shadow-lg hover:shadow-fuchsia-500/30 backdrop-blur-lg text-center">
-            <span class="text-5xl group-hover:scale-125 transition-transform block mb-4">📚</span>
-            <h4 class="text-lg font-medium text-violet-300">Reading</h4>
-          </div>
-
-          <div class="hobby-card group bg-gradient-to-br from-slate-800/60 to-purple-900/40 p-8 rounded-2xl transform hover:scale-110 transition-all duration-500 border border-violet-500/20 hover:border-fuchsia-500/50 hover:shadow-lg hover:shadow-fuchsia-500/30 backdrop-blur-lg text-center">
-            <span class="text-5xl group-hover:scale-125 transition-transform block mb-4">🎸</span>
-            <h4 class="text-lg font-medium text-violet-300">Music</h4>
-          </div>
-
-          <div class="hobby-card group bg-gradient-to-br from-slate-800/60 to-purple-900/40 p-8 rounded-2xl transform hover:scale-110 transition-all duration-500 border border-violet-500/20 hover:border-fuchsia-500/50 hover:shadow-lg hover:shadow-fuchsia-500/30 backdrop-blur-lg text-center">
-            <span class="text-5xl group-hover:scale-125 transition-transform block mb-4">✈️</span>
-            <h4 class="text-lg font-medium text-violet-300">Travel</h4>
-          </div>
-        </div>
-
-        <div class="absolute -z-10 w-96 h-96 bg-gradient-to-br from-violet-600/20 to-fuchsia-600/20 rounded-full blur-3xl top-1/2 left-1/2 -translate-x-1/2 animate__animated animate__pulse animate__infinite"></div>
-      </div>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects" class="py-20 px-6 relative overflow-hidden">
-      <div class="container mx-auto">
-        <h2 class="text-5xl font-bold bg-gradient-to-r from-violet-400 via-purple-400 to-fuchsia-400 bg-clip-text text-transparent mb-12 text-center animate__animated animate__fadeInDown glow-text">
-          Projects
-        </h2>
-        <div class="flex flex-wrap -m-6">
-
-          <!-- Project 1 -->
-          <div class="p-6 md:w-1/2 lg:w-1/4 animate__animated animate__fadeInUp">
-            <div class="h-full border-2 border-gradient-to-br from-violet-500 to-fuchsia-500 rounded-2xl overflow-hidden hover:shadow-2xl hover:shadow-fuchsia-500/30 transition-all duration-300 transform hover:scale-105 bg-gradient-to-br from-slate-800/60 to-purple-900/40 backdrop-blur-lg">
-              <a href="https://github.com/Parthwebde12/Portfoliosite-master.git" target="_blank" rel="noopener noreferrer" class="block relative group">
-                <img class="lg:h-48 md:h-40 w-full object-cover object-center transition-opacity duration-300 group-hover:opacity-50" src="Project1.jpg.png" alt="Project 1">
-                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-violet-600/80 to-fuchsia-600/80">
-                  <span class="text-white font-bold text-lg">View Project</span>
-                </div>
-              </a>
-              <div class="p-6">
-                <h2 class="tracking-widest text-xs font-medium text-violet-400 mb-1">WEB DEVELOPMENT</h2>
-                <h1 class="title-font text-lg font-medium text-transparent bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text mb-3">Portfolio Website</h1>
-                <p class="leading-relaxed mb-4 text-gray-300">A responsive website showcasing my skills, projects, and resume download option.</p>
-                <a class="text-violet-400 inline-flex items-center hover:text-fuchsia-400 transition-colors font-semibold" href="https://github.com/Parthwebde12/Portfoliosite-master.git" target="_blank" rel="noopener">Learn More →</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 2 -->
-          <div class="p-6 md:w-1/2 lg:w-1/4 animate__animated animate__fadeInUp animate__delay-1s">
-            <div class="h-full border-2 border-gradient-to-br from-violet-500 to-fuchsia-500 rounded-2xl overflow-hidden hover:shadow-2xl hover:shadow-fuchsia-500/30 transition-all duration-300 transform hover:scale-105 bg-gradient-to-br from-slate-800/60 to-purple-900/40 backdrop-blur-lg">
-              <a href="https://parthwebde12.github.io/shopifyclone/" target="_blank" rel="noopener" class="block relative group">
-                <img class="lg:h-48 md:h-40 w-full object-cover object-center transition-opacity duration-300 group-hover:opacity-50" src="Screenshot 2025-09-30 175021.png" alt="Project 2">
-                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-violet-600/80 to-fuchsia-600/80">
-                  <span class="text-white font-bold text-lg">View Project</span>
-                </div>
-              </a>
-              <div class="p-6">
-                <h2 class="tracking-widest text-xs font-medium text-violet-400 mb-1">WEB DEVELOPMENT</h2>
-                <h1 class="title-font text-lg font-medium text-transparent bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text mb-3">E-commerce App</h1>
-                <p class="leading-relaxed mb-4 text-gray-300">An online shopping platform with cart, payment gateway, and admin dashboard.</p>
-                <a class="text-violet-400 inline-flex items-center hover:text-fuchsia-400 transition-colors font-semibold" href="https://parthwebde12.github.io/shopifyclone/" target="_blank" rel="noopener">Learn More →</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 3 -->
-          <div class="p-6 md:w-1/2 lg:w-1/4 animate__animated animate__fadeInUp animate__delay-2s">
-            <div class="h-full border-2 border-gradient-to-br from-violet-500 to-fuchsia-500 rounded-2xl overflow-hidden hover:shadow-2xl hover:shadow-fuchsia-500/30 transition-all duration-300 transform hover:scale-105 bg-gradient-to-br from-slate-800/60 to-purple-900/40 backdrop-blur-lg">
-              <a href="https://parthwebde12.github.io/Memory-Game-2/" target="_blank" rel="noopener" class="block relative group">
-                <img class="lg:h-48 md:h-40 w-full object-cover object-center transition-opacity duration-300 group-hover:opacity-50" src="Gaming.png" alt="Project 3">
-                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-violet-600/80 to-fuchsia-600/80">
-                  <span class="text-white font-bold text-lg">View Project</span>
-                </div>
-              </a>
-              <div class="p-6">
-                <h2 class="tracking-widest text-xs font-medium text-violet-400 mb-1">GAME DEVELOPMENT</h2>
-                <h1 class="title-font text-lg font-medium text-transparent bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text mb-3">Memory Game</h1>
-                <p class="leading-relaxed mb-4 text-gray-300">A fun memory card game using JavaScript and DOM manipulation techniques.</p>
-                <a class="text-violet-400 inline-flex items-center hover:text-fuchsia-400 transition-colors font-semibold" href="https://parthwebde12.github.io/Memory-Game-2/" target="_blank" rel="noopener">Learn More →</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 4 -->
-          <div class="p-6 md:w-1/2 lg:w-1/4 animate__animated animate__fadeInUp animate__delay-3s">
-            <div class="h-full border-2 border-gradient-to-br from-violet-500 to-fuchsia-500 rounded-2xl overflow-hidden hover:shadow-2xl hover:shadow-fuchsia-500/30 transition-all duration-300 transform hover:scale-105 bg-gradient-to-br from-slate-800/60 to-purple-900/40 backdrop-blur-lg">
-              <a href="#" class="block relative group">
-                <img class="lg:h-48 md:h-40 w-full object-cover object-center transition-opacity duration-300 group-hover:opacity-50" src="under-development-sign-isolated-on-600w-80415847.webp" alt="Project 4">
-                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-violet-600/80 to-fuchsia-600/80">
-                  <span class="text-white font-bold text-lg">Coming Soon</span>
-                </div>
-              </a>
-              <div class="p-6">
-                <h2 class="tracking-widest text-xs font-medium text-violet-400 mb-1">WEB DEVELOPMENT</h2>
-                <h1 class="title-font text-lg font-medium text-transparent bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text mb-3">Job Portal</h1>
-                <p class="leading-relaxed mb-4 text-gray-300">A dynamic job listing platform with search, filter, and detailed job pages.</p>
-                <a class="text-violet-400 inline-flex items-center hover:text-fuchsia-400 transition-colors font-semibold" href="#">Learn More →</a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <div class="absolute -z-10 w-96 h-96 bg-gradient-to-br from-violet-600/20 to-fuchsia-600/20 rounded-full blur-3xl top-1/2 left-1/2 -translate-x-1/2 animate__animated animate__pulse animate__infinite"></div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="py-20 px-6 relative overflow-hidden">
-      <div class="container mx-auto">
-        <h2 class="text-5xl font-bold bg-gradient-to-r from-violet-400 via-purple-400 to-fuchsia-400 bg-clip-text text-transparent mb-12 text-center animate__animated animate__fadeInDown glow-text">
-          Get In Touch
-        </h2>
-
-        <div class="flex flex-col md:flex-row gap-12">
-          <!-- Contact Form -->
-          <div class="md:w-1/2 animate__animated animate__fadeInLeft">
-            <form class="space-y-6 bg-gradient-to-br from-slate-800/60 to-purple-900/40 p-8 rounded-2xl backdrop-blur-lg border border-violet-500/30 shadow-xl shadow-purple-900/20">
-              <div class="group">
-                <input type="text" placeholder="Your Name" class="w-full p-4 rounded-lg bg-slate-700/50 border border-violet-500/30 text-gray-100 placeholder-gray-500
-                         focus:outline-none focus:ring-2 focus:ring-violet-500 transition-all group-hover:border-fuchsia-500/30 group-hover:shadow-lg group-hover:shadow-fuchsia-500/20">
-              </div>
-              <div class="group">
-                <input type="email" placeholder="Your Email" class="w-full p-4 rounded-lg bg-slate-700/50 border border-violet-500/30 text-gray-100 placeholder-gray-500
-                         focus:outline-none focus:ring-2 focus:ring-violet-500 transition-all group-hover:border-fuchsia-500/30 group-hover:shadow-lg group-hover:shadow-fuchsia-500/20">
-              </div>
-              <div class="group">
-                <textarea placeholder="Your Message" rows="5" class="w-full p-4 rounded-lg bg-slate-700/50 border border-violet-500/30 text-gray-100 placeholder-gray-500
-                         focus:outline-none focus:ring-2 focus:ring-violet-500 transition-all group-hover:border-fuchsia-500/30 group-hover:shadow-lg group-hover:shadow-fuchsia-500/20 resize-none"></textarea>
-              </div>
-              <button type="submit" class="w-full bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 text-white font-bold py-4 rounded-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl hover:shadow-fuchsia-500/50 shadow-lg shadow-purple-900/20">
-                Send Message
-              </button>
-            </form>
-          </div>
-
-          <!-- Contact Info -->
-          <div class="md:w-1/2 space-y-8 animate__animated animate__fadeInRight">
-            <div class="bg-gradient-to-br from-slate-800/60 to-purple-900/40 p-8 rounded-2xl backdrop-blur-lg border border-violet-500/30 shadow-xl shadow-purple-900/20">
-              <h3 class="text-2xl font-bold bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent mb-6">Let's Connect</h3>
-              <div class="space-y-5">
-                <div class="flex items-center space-x-4 group">
-                  <span class="text-2xl text-violet-400 group-hover:scale-110 transition-transform">📍</span>
-                  <p class="text-gray-300 group-hover:text-violet-300 transition-colors">Pune, India</p>
-                </div>
-                <div class="flex items-center space-x-4 group">
-                  <span class="text-2xl text-violet-400 group-hover:scale-110 transition-transform">📧</span>
-                  <p class="text-gray-300 group-hover:text-violet-300 transition-colors">parthwakodikar4@gmail.com</p>
-                </div>
-                <div class="flex items-center space-x-4 group">
-                  <span class="text-2xl text-violet-400 group-hover:scale-110 transition-transform">📱</span>
-                  <p class="text-gray-300 group-hover:text-violet-300 transition-colors">+91 2432423</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Social Links -->
-            <div class="flex justify-center gap-6">
-              <a href="www.linkedin.com/in/parth-w-3b15b4317" class="p-3 bg-gradient-to-br from-slate-800/60 to-purple-900/40 rounded-full border border-violet-500/30 hover:border-fuchsia-500/50 text-violet-400 hover:text-fuchsia-400 transform hover:scale-110 transition-all shadow-lg shadow-purple-900/20 hover:shadow-fuchsia-500/30">
-                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                resume download option.</p>
-              <a class="text-indigo-500 inline-flex items-center hover:underline"
-                href="https://github.com/Parthwebde12/Portfoliosite-master.git" target="_blank" rel="noopener">Learn
-                More</a>
-            </div>
+            <a href="https://github.com/Parthwebde12/Portfoliosite-master.git" target="_blank" class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors font-semibold">
+              View Project
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </a>
           </div>
         </div>
 
         <!-- Project 2 -->
-       
+        <div class="card-hover glass-effect rounded-lg overflow-hidden group">
+          <div class="relative h-64 overflow-hidden">
+            <img src="Screenshot 2025-09-30 175021.png" alt="E-commerce" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <div class="project-overlay"></div>
+          </div>
+          <div class="p-8">
+            <p class="text-cyan-400 text-xs font-semibold uppercase tracking-widest mb-3">Full Stack</p>
+            <h3 class="text-2xl font-bold text-white mb-3">E-Commerce Platform</h3>
+            <p class="text-gray-400 mb-6">Complete e-commerce solution with product catalog, cart, checkout, and admin dashboard. Production-ready architecture.</p>
+            <div class="flex gap-2 mb-6 flex-wrap">
+              <span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded text-xs border border-cyan-500/30">MERN</span>
+              <span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded text-xs border border-cyan-500/30">MongoDB</span>
+              <span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded text-xs border border-cyan-500/30">Payment Gateway</span>
+            </div>
+            <a href="https://parthwebde12.github.io/shopifyclone/" target="_blank" class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors font-semibold">
+              View Project
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
 
-  <!-- Contact -->
- 
-</body>
+        <!-- Project 3 -->
+        <div class="card-hover glass-effect rounded-lg overflow-hidden group">
+          <div class="relative h-64 overflow-hidden">
+            <img src="Gaming.png" alt="Memory Game" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <div class="project-overlay"></div>
+          </div>
+          <div class="p-8">
+            <p class="text-cyan-400 text-xs font-semibold uppercase tracking-widest mb-3">Interactive Game</p>
+            <h3 class="text-2xl font-bold text-white mb-3">Memory Card Game</h3>
+            <p class="text-gray-400 mb-6">Engaging memory matching game with smooth animations, score tracking, and responsive design. Built with vanilla JavaScript.</p>
+            <div class="flex gap-2 mb-6 flex-wrap">
+              <span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded text-xs border border-cyan-500/30">JavaScript</span>
+              <span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded text-xs border border-cyan-500/30">DOM API</span>
+              <span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded text-xs border border-cyan-500/30">CSS3</span>
+            </div>
+            <a href="https://parthwebde12.github.io/Memory-Game-2/" target="_blank" class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors font-semibold">
+              View Project
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
 
-</html>
+        <!-- Project 4 - Coming Soon -->
+        <div class="card-hover glass-effect rounded-lg overflow-hidden group">
+          <div class="relative h-64 overflow-hidden bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center">
+            <div class="text-center">
+              <p class="text-cyan-400 text-4xl mb-2">🚀</p>
+              <p class="text-gray-400 font-semibold">Coming Soon</p>
+            </div>
+          </div>
+          <div class="p-8">
+            <p class="text-cyan-400 text-xs font-semibold uppercase tracking-widest mb-3">In Development</p>
+            <h3 class="text-2xl font-bold text-white mb-3">Job Portal Platform</h3>
+            <p class="text-gray-400 mb-6">A dynamic job listing platform with advanced search filters, job recommendations, and an intuitive application system.</p>
+            <div class="flex gap-2 mb-6 flex-wrap">
+              <span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded text-xs border border-cyan-500/30">MERN</span>
+              <span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded text-xs border border-cyan-500/30">Redis</span>
+              <span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded text-xs border border-cyan-500/30">Real-time</span>
+            </div>
+            <span class="inline-flex items-center gap-2 text-gray-500 font-semibold">
+              Coming Soon
+              <span class="pulse-dot"></span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
+        <a href="https://github.com/Parthwebde12" target="_blank" class="inline-flex items-center gap-2 px-8 py-3 border border-cyan-500/50 text-cyan-400 rounded-lg font-semibold hover:bg-cyan-500/10 transition-all">
+          View More on GitHub
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-24 px-6 relative">
+    <div class="container mx-auto max-w-4xl">
+      <div class="text-center mb-16">
+        <p class="text-cyan-400 text-sm font-semibold uppercase tracking-widest mb-4">Get In Touch</p>
+        <h2 class="text-5xl md:text-6xl font-bold mb-6">
+          <span class="text-white">Let's create</span>
+          <span class="gradient-text"> something great</span>
+        </h2>
+        <p class="text-gray-400 text-lg">Have a project in mind? I'd love to hear from you.</p>
+      </div>
+
+      <!-- Contact Info Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <a href="mailto:parthwakodikar4@gmail.com" class="card-hover glass-effect rounded-lg p-8 text-center">
+          <div class="text-3xl mb-4">📧</div>
+          <h3 class="text-white font-bold mb-2">Email</h3>
+          <p class="text-cyan-400 hover:text-cyan-300 transition-colors break-all">parthwakodikar4@gmail.com</p>
+        </a>
+        <div class="card-hover glass-effect rounded-lg p-8 text-center">
+          <div class="text-3xl mb-4">📍</div>
+          <h3 class="text-white font-bold mb-2">Location</h3>
+          <p class="text-gray-400">Pune, India</p>
+        </div>
+        <div class="card-hover glass-effect rounded-lg p-8 text-center">
+          <div class="text-3xl mb-4">💬</div>
+          <h3 class="text-white font-bold mb-2">Response</h3>
+          <p class="text-gray-400">Within 24 hours</p>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <form class="glass-effect rounded-lg p-8 md:p-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <input type="text" placeholder="Full Name" class="px-4 py-3 bg-black/50 border border-cyan-500/20 rounded-lg text-gray-100 placeholder-gray-600 focus:outline-none focus:border-cyan-500/50 transition-colors" required>
+          <input type="email" placeholder="Email Address" class="px-4 py-3 bg-black/50 border border-cyan-500/20 rounded-lg text-gray-100 placeholder-gray-600 focus:outline-none focus:border-cyan-500/50 transition-colors" required>
+        </div>
+        <input type="text" placeholder="Subject" class="w-full px-4 py-3 bg-black/50 border border-cyan-500/20 rounded-lg text-gray-100 placeholder-gray-600 focus:outline-none focus:border-cyan-500/50 transition-colors mb-6" required>
+        <textarea placeholder="Tell me about your project..." rows="6" class="w-full px-4 py-3 bg-black/50 border border-cyan-500/20 rounded-lg text-gray-100 placeholder-gray-600 focus:outline-none focus:border-cyan-500/50 transition-colors resize-none mb-6" required></textarea>
+        <button type="submit" class="w-full px-8 py-3 button-glow text-black rounded-lg font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-all">
+          Send Message
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-cyan-500/20 py-8 px-6">
+    <div class="container mx-auto max-w-5xl text-center text-gray-500 text-sm">
+      <p>© 2026 Parth Wakodikar. Designed & Built with passion.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Add animation to elements on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate__animated', 'animate__fadeIn');
+        }
+      });
+    });
+
+    document.querySelectorAll('.card-hover').forEach(el => observer.observe(el));
+  </script>
 
 </body>
 
