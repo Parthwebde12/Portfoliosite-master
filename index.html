@@ -1,635 +1,689 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Portfolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <link rel="stylesheet" href="styleportfolio.css">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <style>
+    body {
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0f1419 100%);
+      background-attachment: fixed;
+    }
+    .glow-text {
+      text-shadow: 0 0 30px rgba(168, 85, 247, 0.6), 0 0 60px rgba(168, 85, 247, 0.3), 0 0 90px rgba(236, 72, 153, 0.2);
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    .gradient-border {
+      background: linear-gradient(135deg, #e0e0e0 0%, #a0a0a0 50%, #606060 100%);
+    }
+    * {
+      color-scheme: dark;
+    }
+  </style>
 </head>
-<body class="bg-gray-900 text-gray-100 scroll-smooth">
+
+<body class="text-gray-100 scroll-smooth">
 
   <!-- Navbar -->
-  <nav class="bg-gradient-to-r from-gray-900/95 to-gray-800/95 backdrop-blur-md p-6 sticky top-0 z-50 shadow-xl animate__animated animate__fadeInDown border-b border-indigo-500/20">
+  <nav class="bg-gradient-to-r from-slate-950/80 via-purple-950/80 to-slate-950/80 backdrop-blur-xl p-6 sticky top-0 z-50 shadow-2xl shadow-purple-900/50 animate__animated animate__fadeInDown border-b border-purple-500/30">
     <div class="container mx-auto flex justify-between items-center">
-      <h1 class="text-3xl font-bold bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent hover:scale-105 transition-all duration-300 animate__animated animate__pulse animate__infinite">
-        <span class="hover:animate-spin inline-block mr-2">💫</span>My Portfolio
+      <h1 class="text-3xl font-bold bg-gradient-to-r from-violet-400 via-purple-400 to-fuchsia-400 bg-clip-text text-transparent hover:scale-105 transition-all duration-300 animate__animated animate__pulse animate__infinite glow-text">
+        <span class="hover:animate-spin inline-block mr-2">✨</span>Dev Portfolio
       </h1>
       <ul class="flex space-x-8">
         <li class="animate__animated animate__fadeInRight animate__delay-1s">
-          <a href="#about" class="nav-link group">
-            <span class="relative">
-              About
-              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-400 group-hover:w-full transition-all duration-300"></span>
-            </span>
+          <a href="#about" class="nav-link group relative text-gray-200 hover:text-violet-300 transition-colors">
+            <span>About</span>
+            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-violet-400 to-fuchsia-400 group-hover:w-full transition-all duration-300"></span>
           </a>
         </li>
         <li class="animate__animated animate__fadeInRight animate__delay-2s">
-          <a href="#skills" class="nav-link group">
-            <span class="relative">
-              Skills
-              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-400 group-hover:w-full transition-all duration-300"></span>
-            </span>
+          <a href="#skills" class="nav-link group relative text-gray-200 hover:text-violet-300 transition-colors">
+            <span>Skills</span>
+            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-violet-400 to-fuchsia-400 group-hover:w-full transition-all duration-300"></span>
           </a>
         </li>
         <li class="animate__animated animate__fadeInRight animate__delay-3s">
-          <a href="#projects" class="nav-link group">
-            <span class="relative">
-              Projects
-              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-400 group-hover:w-full transition-all duration-300"></span>
-            </span>
+          <a href="#projects" class="nav-link group relative text-gray-200 hover:text-violet-300 transition-colors">
+            <span>Projects</span>
+            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-violet-400 to-fuchsia-400 group-hover:w-full transition-all duration-300"></span>
           </a>
         </li>
         <li class="animate__animated animate__fadeInRight animate__delay-4s">
-          <a href="#contact" class="px-4 py-2 bg-indigo-500 rounded-full hover:bg-indigo-600 transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/30 transform hover:-translate-y-1">
+          <a href="#contact" class="px-6 py-2 bg-gradient-to-r from-violet-600 to-fuchsia-600 rounded-full hover:from-violet-500 hover:to-fuchsia-500 transition-all duration-300 hover:shadow-lg hover:shadow-fuchsia-500/50 transform hover:-translate-y-1 font-semibold">
             Contact
           </a>
         </li>
       </ul>
     </div>
-    
   </nav>
 
   <!-- About Me -->
   <section id="about" class="py-20 px-6 relative overflow-hidden">
     <div class="container mx-auto flex flex-col md:flex-row items-center md:space-x-12">
       <div class="md:w-1/2 animate__animated animate__fadeInLeft animate__delay-1s">
-        <img src="image.jpg" alt="Professional portrait of developer smiling warmly and wearing formal attire against a light background, creating an approachable and confident impression" 
-          class="rounded-2xl w-80 mx-auto md:mx-0 
-              shadow-xl shadow-indigo-500/20
-              hover:scale-105 hover:shadow-2xl hover:shadow-indigo-500/40 
-              transition-all duration-500 ease-in-out
-              opacity-0 animate-[fadeIn_2s_ease-in_forwards]
-              filter hover:brightness-110">
-        
+        <div class="gradient-border p-1 rounded-3xl w-80 mx-auto md:mx-0">
+          <img src="image.jpg" alt="Professional portrait" class="rounded-3xl w-full shadow-2xl shadow-purple-600/40 hover:scale-105 hover:shadow-2xl hover:shadow-fuchsia-500/50 transition-all duration-500 filter hover:brightness-125">
+        </div>
       </div>
       <div class="md:w-1/2 mt-8 md:mt-0">
-        <h2 class="text-4xl font-bold text-indigo-500 mb-4 
-                   animate__animated animate__bounceIn animate__delay-1s">
+        <h2 class="text-5xl font-bold bg-gradient-to-r from-violet-400 via-purple-400 to-fuchsia-400 bg-clip-text text-transparent mb-6 animate__animated animate__bounceIn animate__delay-1s glow-text">
           About Me
         </h2>
-        <p class="text-gray-300 leading-relaxed mb-6 
-                  animate__animated animate__fadeInRight animate__delay-2s"></p>
-         Hi! My name is <b>Parth Wakodikar</b> from Pune. Currently learning MERN stack development.I have working knowledge of C++ and Java.
-         I know how to operate VS code and host them on Github pages and Vercel. 
+        <p class="text-gray-300 leading-relaxed mb-6 animate__animated animate__fadeInRight animate__delay-2s text-lg">
+          Hi! I'm <b class="text-violet-300">Parth Wakodikar</b> from Pune. Currently mastering MERN stack development with expertise in C++ and Java. I specialize in VS Code, GitHub Pages, and Vercel deployments.
         </p>
-        <p class="text-gray-300 leading-relaxed mb-6
-                  animate__animated animate__fadeInRight animate__delay-3s">
-          Currently focused on full-stack development, mastering JavaScript, React, Node.js, and cloud technologies.
-          I believe in continuous learning and staying updated with the latest industry trends.
+        <p class="text-gray-300 leading-relaxed mb-6 animate__animated animate__fadeInRight animate__delay-3s text-lg">
+          Focused on full-stack development with JavaScript, React, Node.js, and cloud technologies. I'm committed to continuous learning and staying ahead of industry trends.
         </p>
         <div class="space-y-4 animate__animated animate__fadeInUp animate__delay-4s">
-          <div class="flex items-center space-x-2">
-            <span class="text-indigo-400">🎓</span>
-            <p>Electronics and Telecommunication</p>
+          <div class="flex items-center space-x-3 text-gray-200">
+            <span class="text-2xl">🎓</span>
+            <p>Electronics and Telecommunication Engineering</p>
           </div>
-          <div class="flex items-center space-x-2">
-            <span class="text-indigo-400">💼</span>
-            <p>Aspiring Full Stack Developer</p>
+          <div class="flex items-center space-x-3 text-gray-200">
+            <span class="text-2xl">💼</span>
+            <p>Full Stack Developer in Progress</p>
           </div>
-          <div class="flex items-center space-x-2">
-            <span class="text-indigo-400">🌟</span>
+          <div class="flex items-center space-x-3 text-gray-200">
+            <span class="text-2xl">🚀</span>
             <p>Open Source Contributor</p>
           </div>
         </div>
-        <button class="mt-8 bg-indigo-500 hover:bg-indigo-600 text-white px-8 py-3 rounded-full
-                       transform hover:scale-105 transition-all duration-300
-                       animate__animated animate__bounceIn animate__delay-5s">
-          <a href="ParthWResume.pdf" rel="mycv" target="_self">resume</a>
-        </button>
+        <a href="ParthWResume.pdf" rel="mycv" target="_self" class="mt-8 bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 text-white px-8 py-3 rounded-full transform hover:scale-105 transition-all duration-300 animate__animated animate__bounceIn animate__delay-5s inline-block font-semibold shadow-lg shadow-fuchsia-500/30">
+          Download Resume
+        </a>
       </div>
     </div>
-    <div class="absolute -z-10 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl top-1/2 left-1/2 
-                animate__animated animate__pulse animate__infinite animate__slow"></div>
+    <div class="absolute -z-10 w-96 h-96 bg-gradient-to-br from-violet-600/20 to-fuchsia-600/20 rounded-full blur-3xl top-1/2 left-1/2 -translate-x-1/2 animate__animated animate__pulse animate__infinite"></div>
   </section>
+
   <!-- Skills -->
   <section id="skills" class="py-20 px-6 relative overflow-hidden">
     <div class="container mx-auto">
-      <h2 class="text-4xl font-bold text-indigo-500 mb-12 text-center animate__animated animate__fadeInDown">
+      <h2 class="text-5xl font-bold bg-gradient-to-r from-violet-400 via-purple-400 to-fuchsia-400 bg-clip-text text-transparent mb-12 text-center animate__animated animate__fadeInDown glow-text">
         My Skills
       </h2>
-      
+
       <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
         <!-- Frontend Skills -->
-        <div class="bg-gray-800/50 p-6 rounded-xl animate__animated animate__fadeInUp">
-          <h3 class="text-xl font-bold text-indigo-400 mb-4">Frontend</h3>
+        <div class="bg-gradient-to-br from-slate-800/60 to-purple-900/40 p-6 rounded-2xl animate__animated animate__fadeInUp backdrop-blur-lg border border-violet-500/20 hover:border-violet-500/50 transition-all shadow-xl shadow-purple-900/20">
+          <h3 class="text-xl font-bold bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent mb-4">Frontend</h3>
           <div class="space-y-4">
             <div class="skill-bar">
-              <div class="flex justify-between mb-1">
+              <div class="flex justify-between mb-2 text-gray-300">
                 <span>HTML/CSS</span>
-                <span>95%</span>
+                <span class="text-violet-400 font-semibold">95%</span>
               </div>
-              <div class="h-2 bg-gray-700 rounded-full">
-                <div class="h-full w-[95%] bg-indigo-500 rounded-full"></div>
+              <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
+                <div class="h-full w-[95%] bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full"></div>
               </div>
             </div>
             <div class="skill-bar">
-              <div class="flex justify-between mb-1">
+              <div class="flex justify-between mb-2 text-gray-300">
                 <span>JavaScript</span>
-                <span>90%</span>
+                <span class="text-violet-400 font-semibold">90%</span>
               </div>
-              <div class="h-2 bg-gray-700 rounded-full">
-                <div class="h-full w-[90%] bg-indigo-500 rounded-full"></div>
+              <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
+                <div class="h-full w-[90%] bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full"></div>
               </div>
             </div>
             <div class="skill-bar">
-              <div class="flex justify-between mb-1">
+              <div class="flex justify-between mb-2 text-gray-300">
                 <span>React</span>
-                <span>85%</span>
+                <span class="text-violet-400 font-semibold">85%</span>
               </div>
-              <div class="h-2 bg-gray-700 rounded-full">
-                <div class="h-full w-[85%] bg-indigo-500 rounded-full"></div>
+              <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
+                <div class="h-full w-[85%] bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full"></div>
               </div>
             </div>
           </div>
         </div>
 
         <!-- Backend Skills -->
-        <div class="bg-gray-800/50 p-6 rounded-xl animate__animated animate__fadeInUp animate__delay-1s">
-          <h3 class="text-xl font-bold text-indigo-400 mb-4">Backend</h3>
+        <div class="bg-gradient-to-br from-slate-800/60 to-purple-900/40 p-6 rounded-2xl animate__animated animate__fadeInUp animate__delay-1s backdrop-blur-lg border border-violet-500/20 hover:border-violet-500/50 transition-all shadow-xl shadow-purple-900/20">
+          <h3 class="text-xl font-bold bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent mb-4">Backend</h3>
           <div class="space-y-4">
             <div class="skill-bar">
-              <div class="flex justify-between mb-1">
+              <div class="flex justify-between mb-2 text-gray-300">
                 <span>Node.js</span>
-                <span>80%</span>
+                <span class="text-violet-400 font-semibold">80%</span>
               </div>
-              <div class="h-2 bg-gray-700 rounded-full">
-                <div class="h-full w-[80%] bg-indigo-500 rounded-full"></div>
+              <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
+                <div class="h-full w-[80%] bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full"></div>
               </div>
             </div>
             <div class="skill-bar">
-              <div class="flex justify-between mb-1">
+              <div class="flex justify-between mb-2 text-gray-300">
                 <span>Express</span>
-                <span>85%</span>
+                <span class="text-violet-400 font-semibold">85%</span>
               </div>
-              <div class="h-2 bg-gray-700 rounded-full">
-                <div class="h-full w-[85%] bg-indigo-500 rounded-full"></div>
+              <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
+                <div class="h-full w-[85%] bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full"></div>
               </div>
             </div>
             <div class="skill-bar">
-              <div class="flex justify-between mb-1">
+              <div class="flex justify-between mb-2 text-gray-300">
                 <span>MongoDB</span>
-                <span>75%</span>
+                <span class="text-violet-400 font-semibold">75%</span>
               </div>
-              <div class="h-2 bg-gray-700 rounded-full">
-                <div class="h-full w-[75%] bg-indigo-500 rounded-full"></div>
+              <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
+                <div class="h-full w-[75%] bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full"></div>
               </div>
             </div>
           </div>
         </div>
 
         <!-- Programming Languages -->
-        <div class="bg-gray-800/50 p-6 rounded-xl animate__animated animate__fadeInUp animate__delay-2s">
-          <h3 class="text-xl font-bold text-indigo-400 mb-4">Languages</h3>
+        <div class="bg-gradient-to-br from-slate-800/60 to-purple-900/40 p-6 rounded-2xl animate__animated animate__fadeInUp animate__delay-2s backdrop-blur-lg border border-violet-500/20 hover:border-violet-500/50 transition-all shadow-xl shadow-purple-900/20">
+          <h3 class="text-xl font-bold bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent mb-4">Languages</h3>
           <div class="space-y-4">
             <div class="skill-bar">
-              <div class="flex justify-between mb-1">
+              <div class="flex justify-between mb-2 text-gray-300">
                 <span>C++</span>
-                <span>90%</span>
+                <span class="text-violet-400 font-semibold">90%</span>
               </div>
-              <div class="h-2 bg-gray-700 rounded-full">
-                <div class="h-full w-[90%] bg-indigo-500 rounded-full"></div>
+              <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
+                <div class="h-full w-[90%] bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full"></div>
               </div>
             </div>
             <div class="skill-bar">
-              <div class="flex justify-between mb-1">
+              <div class="flex justify-between mb-2 text-gray-300">
                 <span>Java</span>
-                <span>85%</span>
+                <span class="text-violet-400 font-semibold">85%</span>
               </div>
-              <div class="h-2 bg-gray-700 rounded-full">
-                <div class="h-full w-[85%] bg-indigo-500 rounded-full"></div>
+              <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
+                <div class="h-full w-[85%] bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full"></div>
               </div>
             </div>
             <div class="skill-bar">
-              <div class="flex justify-between mb-1">
+              <div class="flex justify-between mb-2 text-gray-300">
                 <span>Python</span>
-                <span>80%</span>
+                <span class="text-violet-400 font-semibold">80%</span>
               </div>
-              <div class="h-2 bg-gray-700 rounded-full">
-                <div class="h-full w-[80%] bg-indigo-500 rounded-full"></div>
+              <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
+                <div class="h-full w-[80%] bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full"></div>
               </div>
             </div>
           </div>
         </div>
 
         <!-- Other Skills -->
-        <div class="bg-gray-800/50 p-6 rounded-xl animate__animated animate__fadeInUp animate__delay-3s">
-          <h3 class="text-xl font-bold text-indigo-400 mb-4">Other Skills</h3>
+        <div class="bg-gradient-to-br from-slate-800/60 to-purple-900/40 p-6 rounded-2xl animate__animated animate__fadeInUp animate__delay-3s backdrop-blur-lg border border-violet-500/20 hover:border-violet-500/50 transition-all shadow-xl shadow-purple-900/20">
+          <h3 class="text-xl font-bold bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent mb-4">Other Skills</h3>
           <div class="space-y-4">
             <div class="skill-bar">
-              <div class="flex justify-between mb-1">
+              <div class="flex justify-between mb-2 text-gray-300">
                 <span>DSA</span>
-                <span>85%</span>
+                <span class="text-violet-400 font-semibold">85%</span>
               </div>
-              <div class="h-2 bg-gray-700 rounded-full">
-                <div class="h-full w-[85%] bg-indigo-500 rounded-full"></div>
+              <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
+                <div class="h-full w-[85%] bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full"></div>
               </div>
             </div>
             <div class="skill-bar">
-              <div class="flex justify-between mb-1">
+              <div class="flex justify-between mb-2 text-gray-300">
                 <span>Git</span>
-                <span>90%</span>
+                <span class="text-violet-400 font-semibold">90%</span>
               </div>
-              <div class="h-2 bg-gray-700 rounded-full">
-                <div class="h-full w-[90%] bg-indigo-500 rounded-full"></div>
+              <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
+                <div class="h-full w-[90%] bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full"></div>
               </div>
             </div>
             <div class="skill-bar">
-              <div class="flex justify-between mb-1">
+              <div class="flex justify-between mb-2 text-gray-300">
                 <span>TailwindCSS</span>
-                <span>95%</span>
+                <span class="text-violet-400 font-semibold">95%</span>
               </div>
-              <div class="h-2 bg-gray-700 rounded-full">
-                <div class="h-full w-[95%] bg-indigo-500 rounded-full"></div>
+              <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
+                <div class="h-full w-[95%] bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full"></div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+
     <!-- Certifications -->
-<section id="certifications" class="py-20 px-6 bg-gray-900 relative overflow-hidden">
-  <div class="container mx-auto"></div>
-    <h2 class="text-4xl font-bold text-indigo-500 mb-12 text-center animate__animated animate__fadeInDown">
-      Certifications & Achievements
-    </h2>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Certification 1 -->
-      <div class="bg-gray-800/50 rounded-xl p-6 transform hover:scale-105 transition-all duration-500
-                  border border-indigo-500/20 hover:border-indigo-500/50 group
-                  animate__animated animate__fadeInUp">
-        <div class="relative mb-4 overflow-hidden rounded-lg">
-          <img src="progress-sign-indicates-ongoing-happening-indicating-now-40247141.webp" alt="Certificate" 
-               class="w-full h-48 object-cover transform group-hover:scale-110 transition-all duration-500">
-          <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300
-                      flex items-end justify-center pb-4">
-            <button class="px-4 py-2 bg-indigo-500 rounded-full text-sm font-semibold hover:bg-indigo-600 transform hover:-translate-y-1 transition-all duration-300">
-              View Certificate
-            </button>
-          </div>
-        </div>
-        <div class="space-y-2">
-          <h3 class="text-xl font-bold text-indigo-400">Problem Solving</h3>
-          <p class="text-gray-400">GeeksForGeeks</p>
-          <div class="flex items-center space-x-2 text-sm text-gray-500">
-            <span>🏆 Completed</span>
-            <span>•</span>
-            <span>JUNE 2025</span>
-          </div>
-          <div class="pt-4 flex flex-wrap gap-2">
-            <span class="px-3 py-1 bg-indigo-500/10 text-indigo-400 rounded-full text-xs">c++</span>
-            <span class="px-3 py-1 bg-indigo-500/10 text-indigo-400 rounded-full text-xs">DSA</span>
-            <span class="px-3 py-1 bg-indigo-500/10 text-indigo-400 rounded-full text-xs">Problem Solving</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Certification 2 -->
-      <div class="bg-gray-800/50 rounded-xl p-6 transform hover:scale-105 transition-all duration-500
-                  border border-indigo-500/20 hover:border-indigo-500/50 group
-                  animate__animated animate__fadeInUp animate__delay-1s">
-        <div class="relative mb-4 overflow-hidden rounded-lg">
-          <img src="progress-sign-indicates-ongoing-happening-indicating-now-40247141.webp" alt="Certificate" 
-               class="w-full h-48 object-cover transform group-hover:scale-110 transition-all duration-500">
-          <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300
-                      flex items-end justify-center pb-4">
-            <button class="px-4 py-2 bg-indigo-500 rounded-full text-sm font-semibold hover:bg-indigo-600 transform hover:-translate-y-1 transition-all duration-300">
-              View Certificate
-            </button>
-          </div>
-        </div>
-        <div class="space-y-2">
-          <h3 class="text-xl font-bold text-indigo-400">React & JavaScript</h3>
-          <p class="text-gray-400">Tutorials Point</p>
-          <div class="flex items-center space-x-2 text-sm text-gray-500">
-            <span>🏆 Completed</span>
-            <span>•</span>
-            <span>Ongoing</span>
-          </div>
-          <div class="pt-4 flex flex-wrap gap-2">
-            <span class="px-3 py-1 bg-indigo-500/10 text-indigo-400 rounded-full text-xs">React</span>
-            <span class="px-3 py-1 bg-indigo-500/10 text-indigo-400 rounded-full text-xs">Node.js</span>
-            <span class="px-3 py-1 bg-indigo-500/10 text-indigo-400 rounded-full text-xs">JavaScript</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Certification 3 -->
-      <div class="bg-gray-800/50 rounded-xl p-6 transform hover:scale-105 transition-all duration-500
-                  border border-indigo-500/20 hover:border-indigo-500/50 group
-                  animate__animated animate__fadeInUp animate__delay-2s">
-        <div class="relative mb-4 overflow-hidden rounded-lg">
-          <img src="WhatsApp Image 2025-07-23 at 18.05.39_af5221a1.jpg" alt="Certificate" 
-               class="w-full h-48 object-cover transform group-hover:scale-110 transition-all duration-500">
-          <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300
-                      flex items-end justify-center pb-4">
-            <button class="px-4 py-2 bg-indigo-500 rounded-full text-sm font-semibold hover:bg-indigo-600 transform hover:-translate-y-1 transition-all duration-300">
-              View Certificate
-            </button>
-          </div>
-        </div>
-        <div class="space-y-2">
-          <h3 class="text-xl font-bold text-indigo-400">HTML & CSS: From zero to hero</h3>
-          <p class="text-gray-400">Tutorials point</p>
-          <div class="flex items-center space-x-2 text-sm text-gray-500">
-            <span>🏆 Completed</span>
-            <span>•</span>
-            <span>JULY 2025</span>
-          </div>
-          <div class="pt-4 flex flex-wrap gap-2">
-            <span class="px-3 py-1 bg-indigo-500/10 text-indigo-400 rounded-full text-xs">HTML</span>
-            <span class="px-3 py-1 bg-indigo-500/10 text-indigo-400 rounded-full text-xs">Css</span>
-            <span class="px-3 py-1 bg-indigo-500/10 text-indigo-400 rounded-full text-xs">BootstrapCSS</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Animated background elements -->
-  <div class="absolute -z-10 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl top-1/2 left-1/2 
-              animate__animated animate__pulse animate__infinite animate__slow"></div>
-  
-  <!-- Floating particles -->
-  <div class="absolute inset-0 overflow-hidden">
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-  </div>
-
-
-</section>
-
-<!-- Education -->
-<section id="education" class="py-20 px-6 bg-gray-950">
-  <div class="container mx-auto">
-    <h2 class="text-4xl font-bold text-indigo-500 mb-12 text-center animate__animated animate__fadeInDown">
-      My Education Journey
-    </h2>
-    
-    <div class="relative">
-      <!-- Timeline Line -->
-      <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-indigo-500/30"></div>
-
-      <!-- Education Items -->
-      <div class="space-y-16">
-      <!-- Education 1 -->
-      <div class="relative">
-        <div class="absolute left-1/2 transform -translate-x-1/2 -mt-3">
-        <div class="w-6 h-6 bg-indigo-500 rounded-full animate-pulse"></div>
-        </div>
-        <div class="ml-auto w-1/2 pr-8 animate__animated animate__fadeInRight">
-        <div class="bg-gray-800/80 backdrop-blur-sm p-6 rounded-xl border border-indigo-500/20 
-              hover:transform hover:scale-105 transition-all duration-300
-              hover:shadow-xl hover:shadow-indigo-500/20">
-          <h3 class="text-xl font-bold text-indigo-400">B.Tech in Electronics and Telecommunication Engineering</h3>
-          <p class="text-gray-300 mt-2">DY Patil School of Engineering</p>
-          <p class="text-gray-400 text-sm mt-1">2023-2027</p>
-          <p class="text-gray-300 mt-3">CGPA: 8.5</p>
-        </div>
-        </div>
-      </div>
-
-      <!-- Education 2 -->
-      <div class="relative">
-        <div class="absolute left-1/2 transform -translate-x-1/2 -mt-3">
-        <div class="w-6 h-6 bg-indigo-500 rounded-full animate-pulse"></div>
-        </div>
-        <div class="mr-auto w-1/2 pl-8 animate__animated animate__fadeInLeft">
-        <div class="bg-gray-800/80 backdrop-blur-sm p-6 rounded-xl border border-indigo-500/20 
-              hover:transform hover:scale-105 transition-all duration-300
-              hover:shadow-xl hover:shadow-indigo-500/20">
-          <h3 class="text-xl font-bold text-indigo-400">Higher Secondary (XII)</h3>
-          <p class="text-gray-300 mt-2">Taywade Junior college</p>
-          <p class="text-gray-400 text-sm mt-1">2021-2023</p>
-          <p class="text-gray-300 mt-3">Percentage: 85%</p>
-        </div>
-        </div>
-      </div>
-
-      <!-- Education 3 -->
-      <div class="relative">
-        <div class="absolute left-1/2 transform -translate-x-1/2 -mt-3">
-        <div class="w-6 h-6 bg-indigo-500 rounded-full animate-pulse"></div>
-        </div>
-        <div class="ml-auto w-1/2 pr-8 animate__animated animate__fadeInRight">
-        <div class="bg-gray-800/80 backdrop-blur-sm p-6 rounded-xl border border-indigo-500/20 
-              hover:transform hover:scale-105 transition-all duration-300
-              hover:shadow-xl hover:shadow-indigo-500/20">
-          <h3 class="text-xl font-bold text-indigo-400">Secondary School (X)</h3>
-          <p class="text-gray-300 mt-2">Narayana Vidyalayam</p>
-          <p class="text-gray-400 text-sm mt-1">2014-2020</p>
-          <p class="text-gray-300 mt-3">Percentage: 92%</p>
-        </div>
-        </div>
-      </div>
-      </div>
-    </div>
-
-    <!-- Floating particles -->
-    <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-      <div class="particle animate-float1"></div>
-      <div class="particle animate-float2"></div>
-      <div class="particle animate-float3"></div>
-    </div>
-
-    
-    </div>
-
-    <!-- Animated background elements -->
-    <div class="absolute -z-10 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl top-1/2 left-1/2 
-          animate__animated animate__pulse animate__infinite animate__slow"></div>
-  </section></div>
-  <section id="skills" class="py-20 px-6 bg-gray-800 relative overflow-hidden">
-    <div class="container mx-auto">
-      <h2 class="text-4xl font-bold text-indigo-500 mb-12 text-center animate__animated animate__fadeIn">
-        Known Facts About Me
+    <section id="certifications" class="py-20 px-6 relative overflow-hidden">
+      <h2 class="text-5xl font-bold bg-gradient-to-r from-violet-400 via-purple-400 to-fuchsia-400 bg-clip-text text-transparent mb-12 text-center animate__animated animate__fadeInDown glow-text">
+        Certifications & Achievements
       </h2>
 
-      <!-- Light ray animation -->
-      <div class="absolute w-1 h-96 bg-indigo-500/30 blur-md rotate-45 -left-20 animate-[moveRay_8s_linear_infinite]"></div>
-     
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-        <!-- Fact cards with improved animations and hover effects -->
-        <div class="bg-gradient-to-br from-gray-700/50 to-gray-800/50 backdrop-blur-lg p-8 rounded-xl 
-                    animate__animated animate__fadeInLeft animate__delay-1s
-                    transform hover:scale-105 transition-all duration-500
-                    border border-indigo-500/20 hover:border-indigo-500/50
-                    hover:shadow-xl hover:shadow-indigo-500/20">
-          <h3 class="text-2xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent mb-4">
-            🎯 Professional Journey
-          </h3>
-          <p class="text-gray-300 leading-relaxed">Started programming at age 15, developed a passion for web development. 
-            Now exploring the exciting world of modern web technologies and cloud computing.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Certification 1 -->
+        <div class="bg-gradient-to-br from-slate-800/60 to-purple-900/40 rounded-2xl p-6 transform hover:scale-105 transition-all duration-500 border border-violet-500/30 hover:border-fuchsia-500/50 group animate__animated animate__fadeInUp backdrop-blur-lg shadow-xl shadow-purple-900/20">
+          <div class="relative mb-4 overflow-hidden rounded-xl">
+            <img src="progress-sign-indicates-ongoing-happening-indicating-now-40247141.webp" alt="Certificate" class="w-full h-48 object-cover transform group-hover:scale-110 transition-all duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
+              <button type="button" class="px-4 py-2 bg-gradient-to-r from-violet-600 to-fuchsia-600 rounded-full text-sm font-semibold hover:from-violet-500 hover:to-fuchsia-500 transform hover:-translate-y-1 transition-all duration-300 shadow-lg shadow-fuchsia-500/30">
+                View Certificate
+              </button>
+            </div>
+          </div>
+          <div class="space-y-2">
+            <h3 class="text-xl font-bold bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent">Problem Solving</h3>
+            <p class="text-gray-400">GeeksForGeeks</p>
+            <div class="flex items-center space-x-2 text-sm text-gray-500">
+              <span>🏆 Completed</span>
+              <span>•</span>
+              <span>JUNE 2025</span>
+            </div>
+            <div class="pt-4 flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-gradient-to-r from-violet-600/20 to-fuchsia-600/20 text-violet-300 rounded-full text-xs border border-violet-500/30">c++</span>
+              <span class="px-3 py-1 bg-gradient-to-r from-violet-600/20 to-fuchsia-600/20 text-violet-300 rounded-full text-xs border border-violet-500/30">DSA</span>
+              <span class="px-3 py-1 bg-gradient-to-r from-violet-600/20 to-fuchsia-600/20 text-violet-300 rounded-full text-xs border border-violet-500/30">Problem Solving</span>
+            </div>
+          </div>
         </div>
 
-        <div class="bg-gradient-to-br from-gray-700/50 to-gray-800/50 backdrop-blur-lg p-8 rounded-xl 
-                    animate__animated animate__fadeInRight animate__delay-2s
-                    transform hover:scale-105 transition-all duration-500
-                    border border-indigo-500/20 hover:border-indigo-500/50
-                    hover:shadow-xl hover:shadow-indigo-500/20">
-          <h3 class="text-2xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent mb-4">
-            🌱 Current Focus
-          </h3>
-          <p class="text-gray-300 leading-relaxed">Diving deep into MERN stack development. Building projects with React, 
-            Node.js, and exploring cloud technologies.</p>
+        <!-- Certification 2 -->
+        <div class="bg-gradient-to-br from-slate-800/60 to-purple-900/40 rounded-2xl p-6 transform hover:scale-105 transition-all duration-500 border border-violet-500/30 hover:border-fuchsia-500/50 group animate__animated animate__fadeInUp animate__delay-1s backdrop-blur-lg shadow-xl shadow-purple-900/20">
+          <div class="relative mb-4 overflow-hidden rounded-xl">
+            <img src="progress-sign-indicates-ongoing-happening-indicating-now-40247141.webp" alt="Certificate" class="w-full h-48 object-cover transform group-hover:scale-110 transition-all duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
+              <button class="px-4 py-2 bg-gradient-to-r from-violet-600 to-fuchsia-600 rounded-full text-sm font-semibold hover:from-violet-500 hover:to-fuchsia-500 transform hover:-translate-y-1 transition-all duration-300 shadow-lg shadow-fuchsia-500/30">
+                View Certificate
+              </button>
+            </div>
+          </div>
+          <div class="space-y-2">
+            <h3 class="text-xl font-bold bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent">React & JavaScript</h3>
+            <p class="text-gray-400">Tutorials Point</p>
+            <div class="flex items-center space-x-2 text-sm text-gray-500">
+              <span>🏆 Completed</span>
+              <span>•</span>
+              <span>Ongoing</span>
+            </div>
+            <div class="pt-4 flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-gradient-to-r from-violet-600/20 to-fuchsia-600/20 text-violet-300 rounded-full text-xs border border-violet-500/30">React</span>
+              <span class="px-3 py-1 bg-gradient-to-r from-violet-600/20 to-fuchsia-600/20 text-violet-300 rounded-full text-xs border border-violet-500/30">Node.js</span>
+              <span class="px-3 py-1 bg-gradient-to-r from-violet-600/20 to-fuchsia-600/20 text-violet-300 rounded-full text-xs border border-violet-500/30">JavaScript</span>
+            </div>
+          </div>
         </div>
 
-        <div class="bg-gradient-to-br from-gray-700/50 to-gray-800/50 backdrop-blur-lg p-8 rounded-xl 
-                    animate__animated animate__fadeInLeft animate__delay-3s
-                    transform hover:scale-105 transition-all duration-500
-                    border border-indigo-500/20 hover:border-indigo-500/50
-                    hover:shadow-xl hover:shadow-indigo-500/20">
-          <h3 class="text-2xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent mb-4">
-            🏆 Achievements
-          </h3>
-          <p class="text-gray-300 leading-relaxed">Completed multiple certification courses in web development. 
-            Active participant in coding competitions and hackathons.</p>
-        </div>
-
-        <div class="bg-gradient-to-br from-gray-700/50 to-gray-800/50 backdrop-blur-lg p-8 rounded-xl 
-                    animate__animated animate__fadeInRight animate__delay-4s
-                    transform hover:scale-105 transition-all duration-500
-                    border border-indigo-500/20 hover:border-indigo-500/50
-                    hover:shadow-xl hover:shadow-indigo-500/20">
-          <h3 class="text-2xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent mb-4">
-            🌐 Community
-          </h3>
-          <p class="text-gray-300 leading-relaxed">Learning through collaboration. Active on GitHub, participating in 
-            open-source projects, and sharing knowledge with peers.</p>
+        <!-- Certification 3 -->
+        <div class="bg-gradient-to-br from-slate-800/60 to-purple-900/40 rounded-2xl p-6 transform hover:scale-105 transition-all duration-500 border border-violet-500/30 hover:border-fuchsia-500/50 group animate__animated animate__fadeInUp animate__delay-2s backdrop-blur-lg shadow-xl shadow-purple-900/20">
+          <div class="relative mb-4 overflow-hidden rounded-xl">
+            <img src="WhatsApp Image 2025-07-23 at 18.05.39_af5221a1.jpg" alt="Certificate" class="w-full h-48 object-cover transform group-hover:scale-110 transition-all duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
+              <button class="px-4 py-2 bg-gradient-to-r from-violet-600 to-fuchsia-600 rounded-full text-sm font-semibold hover:from-violet-500 hover:to-fuchsia-500 transform hover:-translate-y-1 transition-all duration-300 shadow-lg shadow-fuchsia-500/30">
+                View Certificate
+              </button>
+            </div>
+          </div>
+          <div class="space-y-2">
+            <h3 class="text-xl font-bold bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent">HTML & CSS: From Zero to Hero</h3>
+            <p class="text-gray-400">Tutorials Point</p>
+            <div class="flex items-center space-x-2 text-sm text-gray-500">
+              <span>🏆 Completed</span>
+              <span>•</span>
+              <span>JULY 2025</span>
+            </div>
+            <div class="pt-4 flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-gradient-to-r from-violet-600/20 to-fuchsia-600/20 text-violet-300 rounded-full text-xs border border-violet-500/30">HTML</span>
+              <span class="px-3 py-1 bg-gradient-to-r from-violet-600/20 to-fuchsia-600/20 text-violet-300 rounded-full text-xs border border-violet-500/30">CSS</span>
+              <span class="px-3 py-1 bg-gradient-to-r from-violet-600/20 to-fuchsia-600/20 text-violet-300 rounded-full text-xs border border-violet-500/30">BootstrapCSS</span>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Enhanced Hobbies & Interests Section -->
-      <h3 class="text-3xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent mb-12 text-center
-                 animate__animated animate__fadeIn">
-        Hobbies & Interests
-      </h3>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-        <div class="hobby-card group bg-gradient-to-br from-gray-700/30 to-gray-800/30 p-8 rounded-xl
-                    transform hover:scale-110 transition-all duration-500
-                    border border-indigo-500/10 hover:border-indigo-500/30
-                    hover:shadow-lg hover:shadow-indigo-500/20">
-          <span class="text-5xl group-hover:scale-125 transition-transform block mb-4">🎮</span>
-          <h4 class="text-lg font-medium text-indigo-400">Gaming</h4>
-        </div>
-        
-        <div class="hobby-card group bg-gradient-to-br from-gray-700/30 to-gray-800/30 p-8 rounded-xl
-                    transform hover:scale-110 transition-all duration-500
-                    border border-indigo-500/10 hover:border-indigo-500/30
-                    hover:shadow-lg hover:shadow-indigo-500/20">
-          <span class="text-5xl group-hover:scale-125 transition-transform block mb-4">📚</span>
-          <h4 class="text-lg font-medium text-indigo-400">Reading</h4>
-        </div>
-        
-        <div class="hobby-card group bg-gradient-to-br from-gray-700/30 to-gray-800/30 p-8 rounded-xl
-                    transform hover:scale-110 transition-all duration-500
-                    border border-indigo-500/10 hover:border-indigo-500/30
-                    hover:shadow-lg hover:shadow-indigo-500/20">
-          <span class="text-5xl group-hover:scale-125 transition-transform block mb-4">🎸</span>
-          <h4 class="text-lg font-medium text-indigo-400">Music</h4>
-        </div>
-        
-        <div class="hobby-card group bg-gradient-to-br from-gray-700/30 to-gray-800/30 p-8 rounded-xl
-                    transform hover:scale-110 transition-all duration-500
-                    border border-indigo-500/10 hover:border-indigo-500/30
-                    hover:shadow-lg hover:shadow-indigo-500/20">
-          <span class="text-5xl group-hover:scale-125 transition-transform block mb-4">✈️</span>
-          <h4 class="text-lg font-medium text-indigo-400">Travel</h4>
-        </div>
-      </div>
+      <div class="absolute -z-10 w-96 h-96 bg-gradient-to-br from-violet-600/20 to-fuchsia-600/20 rounded-full blur-3xl top-1/2 left-1/2 -translate-x-1/2 animate__animated animate__pulse animate__infinite"></div>
+    </section>
 
-      
-        </div>
-      </section>
+    <!-- Education -->
+    <section id="education" class="py-20 px-6 relative overflow-hidden">
+      <div class="container mx-auto">
+        <h2 class="text-5xl font-bold bg-gradient-to-r from-violet-400 via-purple-400 to-fuchsia-400 bg-clip-text text-transparent mb-12 text-center animate__animated animate__fadeInDown glow-text">
+          My Education Journey
+        </h2>
 
-    <!-- Animated background elements with more variety -->
-    <div class="absolute -z-10 w-64 h-64 bg-indigo-500/20 rounded-full blur-3xl top-20 left-20 
-          animate__animated animate__pulse animate__infinite animate__slower"></div>
-    <div class="absolute -z-10 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl bottom-20 right-20 
-          animate__animated animate__pulse animate__infinite animate__fast"></div>
-    <div class="absolute -z-10 w-32 h-32 bg-blue-500/20 rounded-full blur-2xl top-1/2 left-1/2 
-          animate__animated animate__bounce animate__infinite"></div>
-  </section>
+        <div class="relative">
+          <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-violet-600/50 to-fuchsia-600/50"></div>
 
-  <!-- Projects -->
-  <section id="projects" class="py-20 px-6">
-    <div class="container mx-auto">
-      <h2 class="text-4xl font-bold text-indigo-500 mb-12 text-center animate__animated animate__fadeInDown">Projects</h2>
-      <div class="flex flex-wrap -m-6">
-        
-        <!-- Project 1 -->
-        <div class="p-6 md:w-1/2 lg:w-1/4 animate__animated animate__fadeInUp">
-          <div class="h-full border-2 border-gray-700 rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105 bg-gray-800">
-            <a href="https://github.com/Parthwebde12/Portfoliosite-master.git" target="_blank" rel="noopener noreferrer" class="block relative group">
-              <img class="lg:h-48 md:h-40 w-full object-cover object-center transition-opacity duration-300 group-hover:opacity-75" src="Project1.jpg.png" alt="Project 1">
-              <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/50">
-                <span class="text-white font-bold">View Project</span>
+          <div class="space-y-16">
+            <!-- Education 1 -->
+            <div class="relative">
+              <div class="absolute left-1/2 transform -translate-x-1/2 -mt-3">
+                <div class="w-6 h-6 bg-gradient-to-br from-violet-500 to-fuchsia-500 rounded-full animate-pulse shadow-lg shadow-fuchsia-500/50"></div>
               </div>
-            </a>
-            <div class="p-6">
-              <h2 class="tracking-widest text-xs font-medium text-gray-500 mb-1">WEB DEVELOPMENT</h2>
-              <h1 class="title-font text-lg font-medium text-gray-100 mb-3">Portfolio Website</h1>
-              <p class="leading-relaxed mb-4 text-gray-300">A responsive website showcasing my skills, projects, and resume download option.</p>
-              <a class="text-indigo-500 inline-flex items-center hover:underline" href="https://github.com/Parthwebde12/Portfoliosite-master.git" target="_blank" rel="noopener">Learn More</a>
+              <div class="ml-auto w-1/2 pr-8 animate__animated animate__fadeInRight">
+                <div class="bg-gradient-to-br from-slate-800/60 to-purple-900/40 p-6 rounded-2xl border border-violet-500/30 hover:border-fuchsia-500/50 hover:transform hover:scale-105 transition-all duration-300 hover:shadow-xl hover:shadow-fuchsia-500/20 backdrop-blur-lg">
+                  <h3 class="text-xl font-bold text-violet-300">B.Tech in Electronics and Telecommunication Engineering</h3>
+                  <p class="text-gray-300 mt-2">DY Patil School of Engineering</p>
+                  <p class="text-gray-500 text-sm mt-1">2023-2027</p>
+                  <p class="text-violet-400 mt-3 font-semibold">CGPA: 8.5</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Education 2 -->
+            <div class="relative">
+              <div class="absolute left-1/2 transform -translate-x-1/2 -mt-3">
+                <div class="w-6 h-6 bg-gradient-to-br from-violet-500 to-fuchsia-500 rounded-full animate-pulse shadow-lg shadow-fuchsia-500/50"></div>
+              </div>
+              <div class="mr-auto w-1/2 pl-8 animate__animated animate__fadeInLeft">
+                <div class="bg-gradient-to-br from-slate-800/60 to-purple-900/40 p-6 rounded-2xl border border-violet-500/30 hover:border-fuchsia-500/50 hover:transform hover:scale-105 transition-all duration-300 hover:shadow-xl hover:shadow-fuchsia-500/20 backdrop-blur-lg">
+                  <h3 class="text-xl font-bold text-violet-300">Higher Secondary (XII)</h3>
+                  <p class="text-gray-300 mt-2">Taywade Junior College</p>
+                  <p class="text-gray-500 text-sm mt-1">2021-2023</p>
+                  <p class="text-violet-400 mt-3 font-semibold">Percentage: 85%</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Education 3 -->
+            <div class="relative">
+              <div class="absolute left-1/2 transform -translate-x-1/2 -mt-3">
+                <div class="w-6 h-6 bg-gradient-to-br from-violet-500 to-fuchsia-500 rounded-full animate-pulse shadow-lg shadow-fuchsia-500/50"></div>
+              </div>
+              <div class="ml-auto w-1/2 pr-8 animate__animated animate__fadeInRight">
+                <div class="bg-gradient-to-br from-slate-800/60 to-purple-900/40 p-6 rounded-2xl border border-violet-500/30 hover:border-fuchsia-500/50 hover:transform hover:scale-105 transition-all duration-300 hover:shadow-xl hover:shadow-fuchsia-500/20 backdrop-blur-lg">
+                  <h3 class="text-xl font-bold text-violet-300">Secondary School (X)</h3>
+                  <p class="text-gray-300 mt-2">Narayana Vidyalayam</p>
+                  <p class="text-gray-500 text-sm mt-1">2014-2020</p>
+                  <p class="text-violet-400 mt-3 font-semibold">Percentage: 92%</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="absolute -z-10 w-96 h-96 bg-gradient-to-br from-violet-600/20 to-fuchsia-600/20 rounded-full blur-3xl top-1/2 left-1/2 -translate-x-1/2 animate__animated animate__pulse animate__infinite"></div>
+      </div>
+    </section>
+
+    <!-- Facts Section -->
+    <section id="facts" class="py-20 px-6 relative overflow-hidden">
+      <div class="container mx-auto">
+        <h2 class="text-5xl font-bold bg-gradient-to-r from-violet-400 via-purple-400 to-fuchsia-400 bg-clip-text text-transparent mb-12 text-center animate__animated animate__fadeIn glow-text">
+          Known Facts About Me
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+          <div class="bg-gradient-to-br from-slate-800/60 to-purple-900/40 backdrop-blur-lg p-8 rounded-2xl animate__animated animate__fadeInLeft animate__delay-1s transform hover:scale-105 transition-all duration-500 border border-violet-500/30 hover:border-fuchsia-500/50 shadow-xl shadow-purple-900/20">
+            <h3 class="text-2xl font-bold bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent mb-4">
+              🎯 Professional Journey
+            </h3>
+            <p class="text-gray-300 leading-relaxed">Started programming at age 15, developed a passion for web development. Now exploring the exciting world of modern web technologies and cloud computing.</p>
+          </div>
+
+          <div class="bg-gradient-to-br from-slate-800/60 to-purple-900/40 backdrop-blur-lg p-8 rounded-2xl animate__animated animate__fadeInRight animate__delay-2s transform hover:scale-105 transition-all duration-500 border border-violet-500/30 hover:border-fuchsia-500/50 shadow-xl shadow-purple-900/20">
+            <h3 class="text-2xl font-bold bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent mb-4">
+              🌱 Current Focus
+            </h3>
+            <p class="text-gray-300 leading-relaxed">Diving deep into MERN stack development. Building projects with React, Node.js, and exploring cloud technologies.</p>
+          </div>
+
+          <div class="bg-gradient-to-br from-slate-800/60 to-purple-900/40 backdrop-blur-lg p-8 rounded-2xl animate__animated animate__fadeInLeft animate__delay-3s transform hover:scale-105 transition-all duration-500 border border-violet-500/30 hover:border-fuchsia-500/50 shadow-xl shadow-purple-900/20">
+            <h3 class="text-2xl font-bold bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent mb-4">
+              🏆 Achievements
+            </h3>
+            <p class="text-gray-300 leading-relaxed">Completed multiple certification courses in web development. Active participant in coding competitions and hackathons.</p>
+          </div>
+
+          <div class="bg-gradient-to-br from-slate-800/60 to-purple-900/40 backdrop-blur-lg p-8 rounded-2xl animate__animated animate__fadeInRight animate__delay-4s transform hover:scale-105 transition-all duration-500 border border-violet-500/30 hover:border-fuchsia-500/50 shadow-xl shadow-purple-900/20">
+            <h3 class="text-2xl font-bold bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent mb-4">
+              🌐 Community
+            </h3>
+            <p class="text-gray-300 leading-relaxed">Learning through collaboration. Active on GitHub, participating in open-source projects, and sharing knowledge with peers.</p>
+          </div>
+        </div>
+
+        <h3 class="text-3xl font-bold bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent mb-12 text-center animate__animated animate__fadeIn glow-text">
+          Hobbies & Interests
+        </h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div class="hobby-card group bg-gradient-to-br from-slate-800/60 to-purple-900/40 p-8 rounded-2xl transform hover:scale-110 transition-all duration-500 border border-violet-500/20 hover:border-fuchsia-500/50 hover:shadow-lg hover:shadow-fuchsia-500/30 backdrop-blur-lg text-center">
+            <span class="text-5xl group-hover:scale-125 transition-transform block mb-4">🎮</span>
+            <h4 class="text-lg font-medium text-violet-300">Gaming</h4>
+          </div>
+
+          <div class="hobby-card group bg-gradient-to-br from-slate-800/60 to-purple-900/40 p-8 rounded-2xl transform hover:scale-110 transition-all duration-500 border border-violet-500/20 hover:border-fuchsia-500/50 hover:shadow-lg hover:shadow-fuchsia-500/30 backdrop-blur-lg text-center">
+            <span class="text-5xl group-hover:scale-125 transition-transform block mb-4">📚</span>
+            <h4 class="text-lg font-medium text-violet-300">Reading</h4>
+          </div>
+
+          <div class="hobby-card group bg-gradient-to-br from-slate-800/60 to-purple-900/40 p-8 rounded-2xl transform hover:scale-110 transition-all duration-500 border border-violet-500/20 hover:border-fuchsia-500/50 hover:shadow-lg hover:shadow-fuchsia-500/30 backdrop-blur-lg text-center">
+            <span class="text-5xl group-hover:scale-125 transition-transform block mb-4">🎸</span>
+            <h4 class="text-lg font-medium text-violet-300">Music</h4>
+          </div>
+
+          <div class="hobby-card group bg-gradient-to-br from-slate-800/60 to-purple-900/40 p-8 rounded-2xl transform hover:scale-110 transition-all duration-500 border border-violet-500/20 hover:border-fuchsia-500/50 hover:shadow-lg hover:shadow-fuchsia-500/30 backdrop-blur-lg text-center">
+            <span class="text-5xl group-hover:scale-125 transition-transform block mb-4">✈️</span>
+            <h4 class="text-lg font-medium text-violet-300">Travel</h4>
+          </div>
+        </div>
+
+        <div class="absolute -z-10 w-96 h-96 bg-gradient-to-br from-violet-600/20 to-fuchsia-600/20 rounded-full blur-3xl top-1/2 left-1/2 -translate-x-1/2 animate__animated animate__pulse animate__infinite"></div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="py-20 px-6 relative overflow-hidden">
+      <div class="container mx-auto">
+        <h2 class="text-5xl font-bold bg-gradient-to-r from-violet-400 via-purple-400 to-fuchsia-400 bg-clip-text text-transparent mb-12 text-center animate__animated animate__fadeInDown glow-text">
+          Projects
+        </h2>
+        <div class="flex flex-wrap -m-6">
+
+          <!-- Project 1 -->
+          <div class="p-6 md:w-1/2 lg:w-1/4 animate__animated animate__fadeInUp">
+            <div class="h-full border-2 border-gradient-to-br from-violet-500 to-fuchsia-500 rounded-2xl overflow-hidden hover:shadow-2xl hover:shadow-fuchsia-500/30 transition-all duration-300 transform hover:scale-105 bg-gradient-to-br from-slate-800/60 to-purple-900/40 backdrop-blur-lg">
+              <a href="https://github.com/Parthwebde12/Portfoliosite-master.git" target="_blank" rel="noopener noreferrer" class="block relative group">
+                <img class="lg:h-48 md:h-40 w-full object-cover object-center transition-opacity duration-300 group-hover:opacity-50" src="Project1.jpg.png" alt="Project 1">
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-violet-600/80 to-fuchsia-600/80">
+                  <span class="text-white font-bold text-lg">View Project</span>
+                </div>
+              </a>
+              <div class="p-6">
+                <h2 class="tracking-widest text-xs font-medium text-violet-400 mb-1">WEB DEVELOPMENT</h2>
+                <h1 class="title-font text-lg font-medium text-transparent bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text mb-3">Portfolio Website</h1>
+                <p class="leading-relaxed mb-4 text-gray-300">A responsive website showcasing my skills, projects, and resume download option.</p>
+                <a class="text-violet-400 inline-flex items-center hover:text-fuchsia-400 transition-colors font-semibold" href="https://github.com/Parthwebde12/Portfoliosite-master.git" target="_blank" rel="noopener">Learn More →</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="p-6 md:w-1/2 lg:w-1/4 animate__animated animate__fadeInUp animate__delay-1s">
+            <div class="h-full border-2 border-gradient-to-br from-violet-500 to-fuchsia-500 rounded-2xl overflow-hidden hover:shadow-2xl hover:shadow-fuchsia-500/30 transition-all duration-300 transform hover:scale-105 bg-gradient-to-br from-slate-800/60 to-purple-900/40 backdrop-blur-lg">
+              <a href="https://parthwebde12.github.io/shopifyclone/" target="_blank" rel="noopener" class="block relative group">
+                <img class="lg:h-48 md:h-40 w-full object-cover object-center transition-opacity duration-300 group-hover:opacity-50" src="Screenshot 2025-09-30 175021.png" alt="Project 2">
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-violet-600/80 to-fuchsia-600/80">
+                  <span class="text-white font-bold text-lg">View Project</span>
+                </div>
+              </a>
+              <div class="p-6">
+                <h2 class="tracking-widest text-xs font-medium text-violet-400 mb-1">WEB DEVELOPMENT</h2>
+                <h1 class="title-font text-lg font-medium text-transparent bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text mb-3">E-commerce App</h1>
+                <p class="leading-relaxed mb-4 text-gray-300">An online shopping platform with cart, payment gateway, and admin dashboard.</p>
+                <a class="text-violet-400 inline-flex items-center hover:text-fuchsia-400 transition-colors font-semibold" href="https://parthwebde12.github.io/shopifyclone/" target="_blank" rel="noopener">Learn More →</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="p-6 md:w-1/2 lg:w-1/4 animate__animated animate__fadeInUp animate__delay-2s">
+            <div class="h-full border-2 border-gradient-to-br from-violet-500 to-fuchsia-500 rounded-2xl overflow-hidden hover:shadow-2xl hover:shadow-fuchsia-500/30 transition-all duration-300 transform hover:scale-105 bg-gradient-to-br from-slate-800/60 to-purple-900/40 backdrop-blur-lg">
+              <a href="https://parthwebde12.github.io/Memory-Game-2/" target="_blank" rel="noopener" class="block relative group">
+                <img class="lg:h-48 md:h-40 w-full object-cover object-center transition-opacity duration-300 group-hover:opacity-50" src="Gaming.png" alt="Project 3">
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-violet-600/80 to-fuchsia-600/80">
+                  <span class="text-white font-bold text-lg">View Project</span>
+                </div>
+              </a>
+              <div class="p-6">
+                <h2 class="tracking-widest text-xs font-medium text-violet-400 mb-1">GAME DEVELOPMENT</h2>
+                <h1 class="title-font text-lg font-medium text-transparent bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text mb-3">Memory Game</h1>
+                <p class="leading-relaxed mb-4 text-gray-300">A fun memory card game using JavaScript and DOM manipulation techniques.</p>
+                <a class="text-violet-400 inline-flex items-center hover:text-fuchsia-400 transition-colors font-semibold" href="https://parthwebde12.github.io/Memory-Game-2/" target="_blank" rel="noopener">Learn More →</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 4 -->
+          <div class="p-6 md:w-1/2 lg:w-1/4 animate__animated animate__fadeInUp animate__delay-3s">
+            <div class="h-full border-2 border-gradient-to-br from-violet-500 to-fuchsia-500 rounded-2xl overflow-hidden hover:shadow-2xl hover:shadow-fuchsia-500/30 transition-all duration-300 transform hover:scale-105 bg-gradient-to-br from-slate-800/60 to-purple-900/40 backdrop-blur-lg">
+              <a href="#" class="block relative group">
+                <img class="lg:h-48 md:h-40 w-full object-cover object-center transition-opacity duration-300 group-hover:opacity-50" src="under-development-sign-isolated-on-600w-80415847.webp" alt="Project 4">
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-violet-600/80 to-fuchsia-600/80">
+                  <span class="text-white font-bold text-lg">Coming Soon</span>
+                </div>
+              </a>
+              <div class="p-6">
+                <h2 class="tracking-widest text-xs font-medium text-violet-400 mb-1">WEB DEVELOPMENT</h2>
+                <h1 class="title-font text-lg font-medium text-transparent bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text mb-3">Job Portal</h1>
+                <p class="leading-relaxed mb-4 text-gray-300">A dynamic job listing platform with search, filter, and detailed job pages.</p>
+                <a class="text-violet-400 inline-flex items-center hover:text-fuchsia-400 transition-colors font-semibold" href="#">Learn More →</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="absolute -z-10 w-96 h-96 bg-gradient-to-br from-violet-600/20 to-fuchsia-600/20 rounded-full blur-3xl top-1/2 left-1/2 -translate-x-1/2 animate__animated animate__pulse animate__infinite"></div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-20 px-6 relative overflow-hidden">
+      <div class="container mx-auto">
+        <h2 class="text-5xl font-bold bg-gradient-to-r from-violet-400 via-purple-400 to-fuchsia-400 bg-clip-text text-transparent mb-12 text-center animate__animated animate__fadeInDown glow-text">
+          Get In Touch
+        </h2>
+
+        <div class="flex flex-col md:flex-row gap-12">
+          <!-- Contact Form -->
+          <div class="md:w-1/2 animate__animated animate__fadeInLeft">
+            <form class="space-y-6 bg-gradient-to-br from-slate-800/60 to-purple-900/40 p-8 rounded-2xl backdrop-blur-lg border border-violet-500/30 shadow-xl shadow-purple-900/20">
+              <div class="group">
+                <input type="text" placeholder="Your Name" class="w-full p-4 rounded-lg bg-slate-700/50 border border-violet-500/30 text-gray-100 placeholder-gray-500
+                         focus:outline-none focus:ring-2 focus:ring-violet-500 transition-all group-hover:border-fuchsia-500/30 group-hover:shadow-lg group-hover:shadow-fuchsia-500/20">
+              </div>
+              <div class="group">
+                <input type="email" placeholder="Your Email" class="w-full p-4 rounded-lg bg-slate-700/50 border border-violet-500/30 text-gray-100 placeholder-gray-500
+                         focus:outline-none focus:ring-2 focus:ring-violet-500 transition-all group-hover:border-fuchsia-500/30 group-hover:shadow-lg group-hover:shadow-fuchsia-500/20">
+              </div>
+              <div class="group">
+                <textarea placeholder="Your Message" rows="5" class="w-full p-4 rounded-lg bg-slate-700/50 border border-violet-500/30 text-gray-100 placeholder-gray-500
+                         focus:outline-none focus:ring-2 focus:ring-violet-500 transition-all group-hover:border-fuchsia-500/30 group-hover:shadow-lg group-hover:shadow-fuchsia-500/20 resize-none"></textarea>
+              </div>
+              <button type="submit" class="w-full bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 text-white font-bold py-4 rounded-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl hover:shadow-fuchsia-500/50 shadow-lg shadow-purple-900/20">
+                Send Message
+              </button>
+            </form>
+          </div>
+
+          <!-- Contact Info -->
+          <div class="md:w-1/2 space-y-8 animate__animated animate__fadeInRight">
+            <div class="bg-gradient-to-br from-slate-800/60 to-purple-900/40 p-8 rounded-2xl backdrop-blur-lg border border-violet-500/30 shadow-xl shadow-purple-900/20">
+              <h3 class="text-2xl font-bold bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent mb-6">Let's Connect</h3>
+              <div class="space-y-5">
+                <div class="flex items-center space-x-4 group">
+                  <span class="text-2xl text-violet-400 group-hover:scale-110 transition-transform">📍</span>
+                  <p class="text-gray-300 group-hover:text-violet-300 transition-colors">Pune, India</p>
+                </div>
+                <div class="flex items-center space-x-4 group">
+                  <span class="text-2xl text-violet-400 group-hover:scale-110 transition-transform">📧</span>
+                  <p class="text-gray-300 group-hover:text-violet-300 transition-colors">parthwakodikar4@gmail.com</p>
+                </div>
+                <div class="flex items-center space-x-4 group">
+                  <span class="text-2xl text-violet-400 group-hover:scale-110 transition-transform">📱</span>
+                  <p class="text-gray-300 group-hover:text-violet-300 transition-colors">+91 2432423</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Social Links -->
+            <div class="flex justify-center gap-6">
+              <a href="www.linkedin.com/in/parth-w-3b15b4317" class="p-3 bg-gradient-to-br from-slate-800/60 to-purple-900/40 rounded-full border border-violet-500/30 hover:border-fuchsia-500/50 text-violet-400 hover:text-fuchsia-400 transform hover:scale-110 transition-all shadow-lg shadow-purple-900/20 hover:shadow-fuchsia-500/30">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                resume download option.</p>
+              <a class="text-indigo-500 inline-flex items-center hover:underline"
+                href="https://github.com/Parthwebde12/Portfoliosite-master.git" target="_blank" rel="noopener">Learn
+                More</a>
             </div>
           </div>
         </div>
 
         <!-- Project 2 -->
         <div class="p-6 md:w-1/2 lg:w-1/4 animate__animated animate__fadeInUp animate__delay-1s">
-          <div class="h-full border-2 border-gray-700 rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105 bg-gray-800">
-            <a href="https://parthwebde12.github.io/shopifyclone/" target="_blank" rel="noopener" class="block relative group">
-              <img class="lg:h-48 md:h-40 w-full object-cover object-center transition-opacity duration-300 group-hover:opacity-75" src="Screenshot 2025-09-30 175021.png" alt="Project 2">
-              <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/50">
+          <div
+            class="h-full border-2 border-gray-700 rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105 bg-gray-800">
+            <a href="https://parthwebde12.github.io/shopifyclone/" target="_blank" rel="noopener"
+              class="block relative group">
+              <img
+                class="lg:h-48 md:h-40 w-full object-cover object-center transition-opacity duration-300 group-hover:opacity-75"
+                src="Screenshot 2025-09-30 175021.png" alt="Project 2">
+              <div
+                class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/50">
                 <span class="text-white font-bold">View Project</span>
               </div>
             </a>
             <div class="p-6">
               <h2 class="tracking-widest text-xs font-medium text-gray-500 mb-1">WEB DEVELOPMENT</h2>
               <h1 class="title-font text-lg font-medium text-gray-100 mb-3">E-commerce App</h1>
-              <p class="leading-relaxed mb-4 text-gray-300">An online shopping platform with cart, payment gateway, and admin dashboard.</p>
-              <a class="text-indigo-500 inline-flex items-center hover:underline" href="https://parthwebde12.github.io/shopifyclone/" target="_blank" rel="noopener">Learn More</a>
+              <p class="leading-relaxed mb-4 text-gray-300">An online shopping platform with cart, payment gateway, and
+                admin dashboard.</p>
+              <a class="text-indigo-500 inline-flex items-center hover:underline"
+                href="https://parthwebde12.github.io/shopifyclone/" target="_blank" rel="noopener">Learn More</a>
             </div>
           </div>
         </div>
 
         <!-- Project 3 -->
         <div class="p-6 md:w-1/2 lg:w-1/4 animate__animated animate__fadeInUp animate__delay-2s">
-          <div class="h-full border-2 border-gray-700 rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105 bg-gray-800">
-            <a href="https://parthwebde12.github.io/Memory-Game-2/" target="_blank" rel="noopener" class="block relative group">
-              <img class="lg:h-48 md:h-40 w-full object-cover object-center transition-opacity duration-300 group-hover:opacity-75" src="Gaming.png" alt="Project 3">
-              <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/50">
+          <div
+            class="h-full border-2 border-gray-700 rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105 bg-gray-800">
+            <a href="https://parthwebde12.github.io/Memory-Game-2/" target="_blank" rel="noopener"
+              class="block relative group">
+              <img
+                class="lg:h-48 md:h-40 w-full object-cover object-center transition-opacity duration-300 group-hover:opacity-75"
+                src="Gaming.png" alt="Project 3">
+              <div
+                class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/50">
                 <span class="text-white font-bold">View Project</span>
               </div>
             </a>
             <div class="p-6">
               <h2 class="tracking-widest text-xs font-medium text-gray-500 mb-1">GAME DEVELOPMENT</h2>
               <h1 class="title-font text-lg font-medium text-gray-100 mb-3">Memory Game</h1>
-              <p class="leading-relaxed mb-4 text-gray-300">A fun memory card game using JavaScript and DOM manipulation techniques.</p>
-              <a class="text-indigo-500 inline-flex items-center hover:underline" href="https://your-project3-url.com" target="_blank" rel="noopener">Learn More</a>
+              <p class="leading-relaxed mb-4 text-gray-300">A fun memory card game using JavaScript and DOM manipulation
+                techniques.</p>
+              <a class="text-indigo-500 inline-flex items-center hover:underline" href="https://your-project3-url.com"
+                target="_blank" rel="noopener">Learn More</a>
             </div>
           </div>
         </div>
 
         <!-- Project 4 -->
         <div class="p-6 md:w-1/2 lg:w-1/4 animate__animated animate__fadeInUp animate__delay-3s">
-          <div class="h-full border-2 border-gray-700 rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105 bg-gray-800">
+          <div
+            class="h-full border-2 border-gray-700 rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105 bg-gray-800">
             <a href="https://your-project4-url.com" target="_blank" rel="noopener" class="block relative group">
-              <img class="lg:h-48 md:h-40 w-full object-cover object-center transition-opacity duration-300 group-hover:opacity-75" src="under-development-sign-isolated-on-600w-80415847.webp" alt="Project 4">
-              <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/50">
+              <img
+                class="lg:h-48 md:h-40 w-full object-cover object-center transition-opacity duration-300 group-hover:opacity-75"
+                src="under-development-sign-isolated-on-600w-80415847.webp" alt="Project 4">
+              <div
+                class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/50">
                 <span class="text-white font-bold">View Project</span>
               </div>
             </a>
             <div class="p-6">
               <h2 class="tracking-widest text-xs font-medium text-gray-500 mb-1">WEB DEVELOPMENT</h2>
               <h1 class="title-font text-lg font-medium text-gray-100 mb-3">Job Portal</h1>
-              <p class="leading-relaxed mb-4 text-gray-300">A dynamic job listing platform with search, filter, and detailed job pages.</p>
-              <a class="text-indigo-500 inline-flex items-center hover:underline" href="https://your-project4-url.com" target="_blank" rel="noopener">Learn More</a>
+              <p class="leading-relaxed mb-4 text-gray-300">A dynamic job listing platform with search, filter, and
+                detailed job pages.</p>
+              <a class="text-indigo-500 inline-flex items-center hover:underline" href="https://your-project4-url.com"
+                target="_blank" rel="noopener">Learn More</a>
             </div>
           </div>
         </div>
@@ -642,37 +696,33 @@
   <section id="contact" class="py-20 px-6 bg-gray-800 relative overflow-hidden">
     <div class="container mx-auto">
       <h2 class="text-4xl font-bold text-indigo-500 mb-12 text-center animate__animated animate__fadeInDown">
-      Get In Touch
+        Get In Touch
       </h2>
 
       <!-- Snake Animation -->
       <div id="snake" class="absolute w-4 h-4 bg-indigo-500 rounded-full blur-sm"></div>
-     
+
 
       <div class="flex flex-col md:flex-row gap-12">
-      <!-- Contact Form -->
-      <div class="md:w-1/2 animate__animated animate__fadeInLeft">
+        <!-- Contact Form -->
+        <div class="md:w-1/2 animate__animated animate__fadeInLeft">
           <form class="space-y-6 bg-gray-700/30 p-8 rounded-xl backdrop-blur-lg border border-indigo-500/20">
             <div class="group">
-              <input type="text" placeholder="Your Name" 
-                class="w-full p-4 rounded-lg bg-gray-700/50 border border-gray-600 text-gray-100 
+              <input type="text" placeholder="Your Name" class="w-full p-4 rounded-lg bg-gray-700/50 border border-gray-600 text-gray-100 
                        focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all
                        group-hover:shadow-lg group-hover:shadow-indigo-500/20">
             </div>
             <div class="group">
-              <input type="email" placeholder="Your Email"
-                class="w-full p-4 rounded-lg bg-gray-700/50 border border-gray-600 text-gray-100 
+              <input type="email" placeholder="Your Email" class="w-full p-4 rounded-lg bg-gray-700/50 border border-gray-600 text-gray-100 
                        focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all
                        group-hover:shadow-lg group-hover:shadow-indigo-500/20">
             </div>
             <div class="group">
-              <textarea placeholder="Your Message" rows="5"
-                class="w-full p-4 rounded-lg bg-gray-700/50 border border-gray-600 text-gray-100 
+              <textarea placeholder="Your Message" rows="5" class="w-full p-4 rounded-lg bg-gray-700/50 border border-gray-600 text-gray-100 
                        focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all
                        group-hover:shadow-lg group-hover:shadow-indigo-500/20"></textarea>
             </div>
-            <button type="submit" 
-              class="w-full bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-4 rounded-lg
+            <button type="submit" class="w-full bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-4 rounded-lg
                      transition-all duration-300 transform hover:-translate-y-1
                      hover:shadow-lg hover:shadow-indigo-500/50">
               Send Message
@@ -702,14 +752,26 @@
 
           <!-- Social Links -->
           <div class="flex justify-center space-x-6 text-gray-300">
-            <a href="www.linkedin.com/in/parth-w-3b15b4317" class="hover:text-indigo-500 transform hover:scale-110 transition-all" title="LinkedIn">
-              <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            <a href="www.linkedin.com/in/parth-w-3b15b4317"
+              class="hover:text-indigo-500 transform hover:scale-110 transition-all" title="LinkedIn">
+              <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+              </svg>
             </a>
-            <a href="https://github.com/Parthwebde12" class="hover:text-indigo-500 transform hover:scale-110 transition-all" title="GitHub">
-              <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            <a href="https://github.com/Parthwebde12"
+              class="hover:text-indigo-500 transform hover:scale-110 transition-all" title="GitHub">
+              <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+              </svg>
             </a>
-            <a href="parthwakodikar4@gmail.com" class="hover:text-indigo-500 transform hover:scale-110 transition-all" title="Email">
-              <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z"/></svg>
+            <a href="parthwakodikar4@gmail.com" class="hover:text-indigo-500 transform hover:scale-110 transition-all"
+              title="Email">
+              <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z" />
+              </svg>
             </a>
           </div>
         </div>
@@ -720,24 +782,26 @@
           animate__animated animate__pulse animate__infinite animate__slow"></div>
     <div class="absolute -z-10 w-64 h-64 bg-purple-500/20 rounded-full blur-2xl bottom-20 right-20 
           animate__animated animate__pulse animate__infinite animate__fast"></div>
-    </section>
+  </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 border-t border-indigo-500/20">
+  <!-- Footer -->
+  <footer class="bg-gray-900 border-t border-indigo-500/20">
     <div class="container mx-auto px-6 py-8">
       <div class="text-center">
-      <p class="text-gray-400 text-sm mb-4">
-        Disclaimer: This portfolio website is for demonstration purposes. 
-        The projects and information presented here are samples of my work and capabilities.
-      </p>
-      <p class="text-gray-500 text-sm">
-        © 2025 Parth Wakodikar. All rights reserved.
-      </p>
+        <p class="text-gray-400 text-sm mb-4">
+          Disclaimer: This portfolio website is for demonstration purposes.
+          The projects and information presented here are samples of my work and capabilities.
+        </p>
+        <p class="text-gray-500 text-sm">
+          © 2025 Parth Wakodikar. All rights reserved.
+        </p>
       </div>
     </div>
-    </footer>
-  </body>
-  </html>
+  </footer>
+</body>
+
+</html>
 
 </body>
+
 </html>
