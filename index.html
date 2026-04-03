@@ -10,289 +10,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    * {
-      font-family: 'Space Grotesk', sans-serif;
-    }
-    
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background: #0a0a0a;
-      background-attachment: fixed;
-      overflow-x: hidden;
-    }
-
-    .gradient-text {
-      background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .glass-effect {
-      backdrop-filter: blur(10px);
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .button-glow {
-      position: relative;
-      overflow: hidden;
-      background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
-    }
-
-    .button-glow::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-      transition: left 0.5s;
-    }
-
-    .button-glow:hover::before {
-      left: 100%;
-    }
-
-    .nav-link-underline {
-      position: relative;
-      display: inline-block;
-    }
-
-    .nav-link-underline::after {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: linear-gradient(90deg, #00d4ff, #0099ff);
-      transition: width 0.3s ease;
-    }
-
-    .nav-link-underline:hover::after {
-      width: 100%;
-    }
-
-    .card-hover {
-      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    .card-hover:hover {
-      transform: translateY(-8px);
-      border-color: rgba(0, 212, 255, 0.5);
-    }
-
-    .skill-container {
-      perspective: 1000px;
-    }
-
-    .skill-item {
-      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    .skill-item:hover {
-      transform: translateY(-4px);
-    }
-
-    .project-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(0, 153, 255, 0.1));
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .card-hover:hover .project-overlay {
-      opacity: 1;
-    }
-
-    .floating-bg {
-      position: fixed;
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      filter: blur(80px);
-      opacity: 0.15;
-      z-index: -1;
-      animation: float 8s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(30px); }
-    }
-
-    .floating-bg-1 {
-      top: 10%;
-      right: 10%;
-      background: #00d4ff;
-      animation-delay: 0s;
-    }
-
-    .floating-bg-2 {
-      bottom: 20%;
-      left: 10%;
-      background: #0099ff;
-      animation-delay: 2s;
-    }
-
-    .floating-bg-3 {
-      top: 50%;
-      right: 20%;
-      background: #00d4ff;
-      animation-delay: 4s;
-    }
-
-    .text-glow {
-      text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
-    }
-
-    .code-block {
-      position: relative;
-      background: rgba(0, 0, 0, 0.5);
-      border-left: 3px solid #00d4ff;
-      padding: 1rem;
-      border-radius: 0.5rem;
-      font-family: 'Courier New', monospace;
-      font-size: 0.875rem;
-      color: #00d4ff;
-      overflow-x: auto;
-    }
-
-    .stat-number {
-      font-size: 2.5rem;
-      font-weight: 700;
-      background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .pulse-dot {
-      width: 12px;
-      height: 12px;
-      background: #00d4ff;
-      border-radius: 50%;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { 
-        box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.7);
-        opacity: 1;
-      }
-      50% { 
-        box-shadow: 0 0 0 10px rgba(0, 212, 255, 0);
-        opacity: 0.8;
-      }
-    }
-
-    .badge-animate {
-      display: inline-block;
-      animation: float-badge 0.3s ease;
-    }
-
-    @keyframes float-badge {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .image-frame {
-      position: relative;
-      overflow: hidden;
-      border-radius: 2rem;
-    }
-
-    .image-frame::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
-      border-radius: 2rem;
-      padding: 3px;
-      z-index: -1;
-    }
-
-    .image-frame img {
-      border-radius: 2rem;
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-
-    .image-frame:hover img {
-      transform: scale(1.05);
-    }
-
-    .gradient-border-bottom {
-      position: relative;
-      padding-bottom: 1rem;
-    }
-
-    .gradient-border-bottom::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100px;
-      height: 3px;
-      background: linear-gradient(90deg, #00d4ff, #0099ff);
-      border-radius: 2px;
-    }
-
-    .social-icon-wrapper {
-      position: relative;
-      width: 48px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
-      border-radius: 12px;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: slideInUp 0.5s ease forwards;
-    }
-
-    @keyframes slideInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .social-icon-wrapper:nth-child(1) { animation-delay: 0.1s; }
-    .social-icon-wrapper:nth-child(2) { animation-delay: 0.2s; }
-    .social-icon-wrapper:nth-child(3) { animation-delay: 0.3s; }
-
-    .social-icon-wrapper:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
-    }
-
-    .social-icon-wrapper svg {
-      width: 24px;
-      height: 24px;
-      color: white;
-    }
-  </style>
+  <link href="styleportfolio.css" rel="stylesheet">
+  
 </head>
 
 <body class="text-gray-100">
@@ -306,13 +25,14 @@
   <nav class="fixed top-0 w-full z-50 glass-effect">
     <div class="container mx-auto px-6 py-4 flex justify-between items-center">
       <div class="text-2xl font-bold">
-        <a href="#" class="gradient-text text-glow">PARTH</a>
+        <a href="#" class="gradient-text text-glow">PARTH WAKODIKAR</a>
       </div>
 
       <ul class="hidden md:flex gap-8">
         <li><a href="#about" class="nav-link-underline text-gray-300 hover:text-white transition-colors text-sm font-medium">About</a></li>
         <li><a href="#skills" class="nav-link-underline text-gray-300 hover:text-white transition-colors text-sm font-medium">Skills</a></li>
         <li><a href="#projects" class="nav-link-underline text-gray-300 hover:text-white transition-colors text-sm font-medium">Projects</a></li>
+        <li><a href="#blog" class="nav-link-underline text-gray-300 hover:text-white transition-colors text-sm font-medium">Blog</a></li>
         <li><a href="#contact" class="nav-link-underline text-gray-300 hover:text-white transition-colors text-sm font-medium">Contact</a></li>
       </ul>
 
@@ -741,6 +461,157 @@
     </div>
   </section>
 
+  <!-- Blog Section -->
+  <section id="blog" class="py-24 px-6 relative">
+    <div class="container mx-auto max-w-5xl">
+      <div class="text-center mb-16">
+        <p class="text-cyan-400 text-sm font-semibold uppercase tracking-widest mb-4">Latest Insights</p>
+        <h2 class="text-5xl md:text-6xl font-bold">
+          <span class="text-white">Blog &</span>
+          <span class="gradient-text"> Articles</span>
+        </h2>
+        <p class="text-gray-400 text-lg mt-4">Sharing knowledge about web development, best practices, and insights from Parth Wakodikar</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Blog Post 1 -->
+        <div class="card-hover glass-effect rounded-lg overflow-hidden group flex flex-col">
+          <div class="relative h-48 overflow-hidden bg-gradient-to-br from-cyan-500/20 to-blue-500/20">
+            <div class="w-full h-full flex items-center justify-center text-4xl">📱</div>
+          </div>
+          <div class="p-6 flex flex-col flex-grow">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-xs bg-cyan-500/20 text-cyan-400 px-3 py-1 rounded-full">React</span>
+              <span class="text-xs text-gray-500">Feb 15, 2026</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">Building Responsive React Components</h3>
+            <p class="text-gray-400 mb-4 flex-grow">Explore best practices for creating responsive and accessible React components with TailwindCSS and modern design patterns.</p>
+            <a href="#" class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors font-semibold text-sm">
+              Read More
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Blog Post 2 -->
+        <div class="card-hover glass-effect rounded-lg overflow-hidden group flex flex-col">
+          <div class="relative h-48 overflow-hidden bg-gradient-to-br from-cyan-500/20 to-blue-500/20">
+            <div class="w-full h-full flex items-center justify-center text-4xl">⚙️</div>
+          </div>
+          <div class="p-6 flex flex-col flex-grow">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-xs bg-cyan-500/20 text-cyan-400 px-3 py-1 rounded-full">Backend</span>
+              <span class="text-xs text-gray-500">Feb 10, 2026</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">MERN Stack Deep Dive</h3>
+            <p class="text-gray-400 mb-4 flex-grow">A comprehensive guide to building scalable MERN applications with proper architecture, database design, and optimization techniques.</p>
+            <a href="#" class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors font-semibold text-sm">
+              Read More
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Blog Post 3 -->
+        <div class="card-hover glass-effect rounded-lg overflow-hidden group flex flex-col">
+          <div class="relative h-48 overflow-hidden bg-gradient-to-br from-cyan-500/20 to-blue-500/20">
+            <div class="w-full h-full flex items-center justify-center text-4xl">🎨</div>
+          </div>
+          <div class="p-6 flex flex-col flex-grow">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-xs bg-cyan-500/20 text-cyan-400 px-3 py-1 rounded-full">Design</span>
+              <span class="text-xs text-gray-500">Feb 5, 2026</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">UI/UX Design Principles</h3>
+            <p class="text-gray-400 mb-4 flex-grow">Master the art of creating beautiful, intuitive user interfaces that users love. Learn design systems and modern CSS techniques.</p>
+            <a href="#" class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors font-semibold text-sm">
+              Read More
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Blog Post 4 -->
+        <div class="card-hover glass-effect rounded-lg overflow-hidden group flex flex-col">
+          <div class="relative h-48 overflow-hidden bg-gradient-to-br from-cyan-500/20 to-blue-500/20">
+            <div class="w-full h-full flex items-center justify-center text-4xl">🔧</div>
+          </div>
+          <div class="p-6 flex flex-col flex-grow">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-xs bg-cyan-500/20 text-cyan-400 px-3 py-1 rounded-full">DevTools</span>
+              <span class="text-xs text-gray-500">Jan 28, 2026</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">Git Workflows & Best Practices</h3>
+            <p class="text-gray-400 mb-4 flex-grow">Master Git version control with practical workflows, branching strategies, and collaboration techniques for team development.</p>
+            <a href="#" class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors font-semibold text-sm">
+              Read More
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Blog Post 5 -->
+        <div class="card-hover glass-effect rounded-lg overflow-hidden group flex flex-col">
+          <div class="relative h-48 overflow-hidden bg-gradient-to-br from-cyan-500/20 to-blue-500/20">
+            <div class="w-full h-full flex items-center justify-center text-4xl">🚀</div>
+          </div>
+          <div class="p-6 flex flex-col flex-grow">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-xs bg-cyan-500/20 text-cyan-400 px-3 py-1 rounded-full">Performance</span>
+              <span class="text-xs text-gray-500">Jan 20, 2026</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">Optimizing Web Performance</h3>
+            <p class="text-gray-400 mb-4 flex-grow">Learn advanced techniques to optimize your web applications for speed, including code splitting, lazy loading, and caching strategies.</p>
+            <a href="#" class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors font-semibold text-sm">
+              Read More
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Blog Post 6 -->
+        <div class="card-hover glass-effect rounded-lg overflow-hidden group flex flex-col">
+          <div class="relative h-48 overflow-hidden bg-gradient-to-br from-cyan-500/20 to-blue-500/20">
+            <div class="w-full h-full flex items-center justify-center text-4xl">🧪</div>
+          </div>
+          <div class="p-6 flex flex-col flex-grow">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-xs bg-cyan-500/20 text-cyan-400 px-3 py-1 rounded-full">Testing</span>
+              <span class="text-xs text-gray-500">Jan 12, 2026</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">Testing JavaScript Applications</h3>
+            <p class="text-gray-400 mb-4 flex-grow">Write robust tests for your JavaScript and React applications using Jest and React Testing Library with real-world examples.</p>
+            <a href="#" class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors font-semibold text-sm">
+              Read More
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
+        <a href="#" class="inline-flex items-center gap-2 px-8 py-3 border border-cyan-500/50 text-cyan-400 rounded-lg font-semibold hover:bg-cyan-500/10 transition-all">
+          View All Articles
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- Contact Section -->
   <section id="contact" class="py-24 px-6 relative">
     <div class="container mx-auto max-w-4xl">
@@ -750,7 +621,7 @@
           <span class="text-white">Let's create</span>
           <span class="gradient-text"> something great</span>
         </h2>
-        <p class="text-gray-400 text-lg">Have a project in mind? I'd love to hear from you.</p>
+        <p class="text-gray-400 text-lg">Have a project in mind? Parth Wakodikar would love to hear from you.</p>
       </div>
 
       <!-- Contact Info Cards -->
@@ -794,28 +665,8 @@
     </div>
   </footer>
 
-  <script>
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth' });
-        }
-      });
-    });
-
-    // Add animation to elements on scroll
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate__animated', 'animate__fadeIn');
-        }
-      });
-    });
-
-    document.querySelectorAll('.card-hover').forEach(el => observer.observe(el));
+  <script src="script.js">
+   
   </script>
 
 </body>
